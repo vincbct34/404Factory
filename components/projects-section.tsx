@@ -70,12 +70,12 @@ export function ProjectsSection() {
                     <span className="text-white">{project.name}</span>
                     <span
                       className={`ml-auto text-xs px-2 py-1 rounded ${project.status === "DEPLOYED"
-                          ? "bg-green-900 text-green-300"
-                          : project.status === "RUNNING"
-                            ? "bg-blue-900 text-blue-300"
-                            : project.status === "DELIVERED"
-                              ? "bg-purple-900 text-purple-300"
-                              : "bg-yellow-900 text-yellow-300"
+                        ? "bg-green-900 text-green-300"
+                        : project.status === "RUNNING"
+                          ? "bg-blue-900 text-blue-300"
+                          : project.status === "DELIVERED"
+                            ? "bg-purple-900 text-purple-300"
+                            : "bg-yellow-900 text-yellow-300"
                         }`}
                     >
                       {project.status}
@@ -103,9 +103,16 @@ export function ProjectsSection() {
             </div>
 
             <div className="text-center">
-              <button className="border border-electric-blue text-electric-blue px-8 py-3 hover:bg-electric-blue hover:text-black transition-all duration-300 font-bold">
-                VOIR TOUS LES PROJETS
-              </button>
+              <a
+                href="https://github.com/vincbct34"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <button className="border border-electric-blue text-electric-blue px-8 py-3 hover:bg-electric-blue hover:text-black transition-all duration-300 font-bold">
+                  VOIR TOUS LES PROJETS
+                </button>
+              </a>
             </div>
           </div>
         </div>
