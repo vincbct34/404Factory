@@ -94,7 +94,6 @@ export function ContactSection() {
                     <option value="">Sélectionner...</option>
                     <option value="website">Site web</option>
                     <option value="automation">Automatisation</option>
-                    <option value="branding">Identité visuelle</option>
                     <option value="consulting">Consulting</option>
                   </select>
                 </div>
