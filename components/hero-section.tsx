@@ -50,7 +50,15 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="crt-button bg-electric-blue text-black px-8 py-4 font-bold uppercase tracking-wider hover:bg-white transition-all duration-300">
+          <button
+            className="crt-button bg-electric-blue text-black px-8 py-4 font-bold uppercase tracking-wider hover:bg-white transition-all duration-300"
+            onClick={() => {
+              const section = document.getElementById("contact")
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
+          >
             {">"} DÉMARRER_PROJET
           </button>
         </div>
