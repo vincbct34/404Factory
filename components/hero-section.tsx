@@ -9,7 +9,7 @@ export function HeroSection() {
     const interval = setInterval(() => {
       setGlitchActive(true)
       setTimeout(() => setGlitchActive(false), 200)
-    }, 3000)
+    }, 1000)
     return () => clearInterval(interval)
   }, [])
 
@@ -34,13 +34,26 @@ export function HeroSection() {
         </div>
 
         {/* Main message */}
-        <h1 className={`text-4xl md:text-7xl font-black leading-tight mb-8 ${glitchActive ? "glitch-active" : ""}`}>
-          JE TRANSFORME
-          <br />
-          VOS <span className="text-electric-blue">ERREURS</span>
-          <br />
-          EN SOLUTIONS
-        </h1>
+        <div className="text-4xl md:text-7xl font-black leading-tight mb-8">
+          <div 
+            className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
+            data-text="JE TRANSFORME"
+          >
+            JE TRANSFORME
+          </div>
+          <div 
+            className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
+            data-text="VOS ERREURS"
+          >
+            VOS <span className="text-electric-blue">ERREURS</span>
+          </div>
+          <div 
+            className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
+            data-text="EN SOLUTIONS"
+          >
+            EN SOLUTIONS
+          </div>
+        </div>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light">
           Agence digitale spécialisée dans la création de solutions sur-mesure.
