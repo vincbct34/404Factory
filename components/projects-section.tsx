@@ -10,6 +10,7 @@ const projects = [
     tech: "Next.js, Node.js, SQLite",
     status: "DELIVERED",
     description: "Plateforme CRM complète avec gestion des utilisateurs et des réservations",
+    github: "https://github.com/vincbct34/Projet-Opera-Public",
   },
   {
     name: "404factory.js",
@@ -17,6 +18,7 @@ const projects = [
     tech: "Next.js, Vercel",
     status: "DEPLOYED",
     description: "Site vitrine de mon agence.",
+    github: "https://github.com/vincbct34/404Factory",
   },
   {
     name: "mypandoc.hs",
@@ -24,13 +26,15 @@ const projects = [
     tech: "Haskell",
     status: "DELIVERED",
     description: "Convertisseur de documents avec Pandoc, supporte le markdown, le json et l'xml.",
+    github: "https://github.com/vincbct34/Tek2-EPITECH/tree/main/Functionnal%20Programming/mypandoc",
   },
   {
     name: "zappy.cpp",
     type: "Game",
-    tech: "C++",
+    tech: "C++, C, Python",
     status: "DELIVERED",
     description: "Simulation multijoueur en réseau sur la planète Trantor.",
+    github: "https://github.com/vincbct34/Tek2-EPITECH/tree/main/zappy",
   }
 ]
 
@@ -97,9 +101,14 @@ export function ProjectsSection() {
                 Type: {projects[selectedProject].type} | Tech: {projects[selectedProject].tech}
               </div>
               <p className="text-gray-300 mb-6">{projects[selectedProject].description}</p>
-              <button className="flex items-center gap-2 text-electric-blue hover:text-white transition-colors">
+              <a
+                href={projects[selectedProject].github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-electric-blue hover:text-white transition-colors"
+              >
                 Voir le projet <ExternalLink className="w-4 h-4" />
-              </button>
+              </a>
             </div>
 
             <div className="text-center">
