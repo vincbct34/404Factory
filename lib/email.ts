@@ -68,7 +68,7 @@ export const sendContactEmail = async (data: ContactFormData): Promise<boolean> 
     // Email pour vous (notification)
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || 'factory404@outlook.com',
+      to: process.env.CONTACT_EMAIL || 'factory404@outlook.fr',
       subject: `🚀 Nouveau contact: ${data.name} - ${data.project}`,
       html: createEmailTemplate(data),
     })
@@ -110,7 +110,7 @@ export const sendContactEmail = async (data: ContactFormData): Promise<boolean> 
               
               <p>À bientôt,<br>
               <strong>Vincent - 404Factory</strong><br>
-              📧 factory404@outlook.com<br>
+              📧 factory404@outlook.fr<br>
               📱 +33 6 23 43 10 09</p>
             </div>
           </div>

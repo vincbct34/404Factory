@@ -137,10 +137,10 @@ export function ContactSection() {
                   <div>
                     <div className="font-bold">Email</div>
                     <a
-                      href="mailto:factory404@outlook.com"
+                      href="mailto:factory404@outlook.fr"
                       className="text-gray-400 underline hover:text-electric-blue"
                     >
-                      factory404@outlook.com
+                      factory404@outlook.fr
                     </a>
                   </div>
                 </div>

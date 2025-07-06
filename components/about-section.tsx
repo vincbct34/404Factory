@@ -14,7 +14,7 @@ export function AboutSection() {
 
           <div className="space-y-6 text-gray-300">
             <div>
-              <div className="text-white font-bold mb-2">## Notre Mission</div>
+              <div className="text-white font-bold mb-2">## Ma Mission</div>
               <p>
                 Transformer les défis techniques en opportunités créatives. Je crois que chaque erreur 404 cache une
                 solution innovante.
@@ -22,7 +22,7 @@ export function AboutSection() {
             </div>
 
             <div>
-              <div className="text-white font-bold mb-2">## Notre Approche</div>
+              <div className="text-white font-bold mb-2">## Mon Approche</div>
               <ul className="space-y-1">
                 <li>• Code propre et maintenable</li>
                 <li>• Design centré utilisateur</li>
@@ -50,10 +50,10 @@ export function AboutSection() {
                 <p>
                 <span className="text-electric-blue">Email: </span>
                 <a
-                  href="mailto:factory404@outlook.com"
+                  href="mailto:factory404@outlook.fr"
                   className="underline hover:text-electric-blue"
                 >
-                  factory404@outlook.com
+                  factory404@outlook.fr
                 </a>
                 <br />
                 <span className="text-electric-blue">GitHub: </span>

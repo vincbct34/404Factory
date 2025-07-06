@@ -31,7 +31,7 @@ export function ServicesSection() {
           <h2 className="text-5xl md:text-6xl font-black mb-4">
             SERVICES<span className="text-electric-blue">.</span>
           </h2>
-          <div className="text-gray-400 font-mono">{"// Nos expertises techniques"}</div>
+          <div className="text-gray-400 font-mono">{"// Mes expertises techniques"}</div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

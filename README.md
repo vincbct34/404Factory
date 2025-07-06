@@ -65,7 +65,7 @@ SMTP_USER=your-email@domain.com
 SMTP_PASS=your-email-password
 
 # Email de destination pour les formulaires
-CONTACT_EMAIL=contact@404factory.com
+CONTACT_EMAIL=contact@404factory.fr
 ```
 
 4. **Lancer le serveur de développement**

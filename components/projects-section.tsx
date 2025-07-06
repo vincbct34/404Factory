@@ -25,7 +25,7 @@ const projects = [
     type: "Tool",
     tech: "Haskell",
     status: "DELIVERED",
-    description: "Convertisseur de documents avec Pandoc, supporte le markdown, le json et l'xml.",
+    description: "Convertisseur de documents inspiré de Pandoc, supporte le markdown, le json et l'xml.",
     github: "https://github.com/vincbct34/Tek2-EPITECH/tree/main/Functionnal%20Programming/mypandoc",
   },
   {
