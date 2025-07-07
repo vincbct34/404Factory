@@ -7,7 +7,7 @@ const pricingOptions = [
     icon: Code,
     title: "SITE_VITRINE",
     subtitle: "Site web moderne et responsive",
-    price: "À partir de 2 500€",
+    price: "À partir de 800€",
     features: [
       "Design sur mesure",
       "Responsive mobile/desktop",
@@ -22,7 +22,7 @@ const pricingOptions = [
     icon: Zap,
     title: "APPLICATION_WEB",
     subtitle: "Solution complète avec backend",
-    price: "À partir de 5 000€",
+    price: "À partir de 2500€",
     features: [
       "Interface utilisateur avancée",
       "Base de données",
@@ -37,7 +37,7 @@ const pricingOptions = [
     icon: Terminal,
     title: "AUTOMATISATION",
     subtitle: "Scripts et intégrations sur mesure",
-    price: "À partir de 1 200€",
+    price: "À partir de 100€",
     features: [
       "Analyse des besoins",
       "Scripts personnalisés",
