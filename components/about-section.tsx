@@ -1,4 +1,10 @@
+'use client'
+
+import { useLastCommit } from '@/lib/hooks/useLastCommit'
+
 export function AboutSection() {
+  const { data: commitData, loading } = useLastCommit()
+
   return (
     <section id="about" className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -70,7 +76,10 @@ export function AboutSection() {
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-700 text-gray-500">
-            Last updated: {new Date().toLocaleDateString()}
+            Last updated: {loading ? 'Chargement...' : commitData?.formatted || new Date().toLocaleDateString('fr-FR')}
+            {commitData?.fallback && (
+              <span className="text-xs ml-2 opacity-75">(fallback)</span>
+            )}
           </div>
         </div>
       </div>

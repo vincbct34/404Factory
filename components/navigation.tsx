@@ -46,26 +46,32 @@ export function Navigation() {
             </button>
           </div>
           <div className="hidden md:flex space-x-8">
-            <button 
-              onClick={() => scrollToSection("services")} 
+            <button
+              onClick={() => scrollToSection("services")}
               className="hover:text-electric-blue transition-colors terminal-cursor"
             >
               ./services
             </button>
-            <button 
-              onClick={() => scrollToSection("projects")} 
+            <button
+              onClick={() => scrollToSection("projects")}
               className="hover:text-electric-blue transition-colors terminal-cursor"
             >
               ./projects
             </button>
-            <button 
-              onClick={() => scrollToSection("about")} 
+            <button
+              onClick={() => scrollToSection("about")}
               className="hover:text-electric-blue transition-colors terminal-cursor"
             >
               ./about
             </button>
-            <button 
-              onClick={() => scrollToSection("contact")} 
+            <button
+              onClick={() => scrollToSection("brochure")}
+              className="hover:text-electric-blue transition-colors terminal-cursor"
+            >
+              ./tarifs
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
               className="hover:text-electric-blue transition-colors terminal-cursor"
             >
               ./contact
