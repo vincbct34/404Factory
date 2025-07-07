@@ -62,7 +62,7 @@ export function BrochureSection() {
           <h2 className="text-5xl md:text-6xl font-black mb-4">
             TARIFS<span className="text-electric-blue">.</span>
           </h2>
-          <div className="text-gray-400 font-mono mb-8">{"// Nos solutions et leurs prix"}</div>
+          <div className="text-gray-400 font-mono mb-8">{"// Mes solutions et leurs prix"}</div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button

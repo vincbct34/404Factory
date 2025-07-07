@@ -5,7 +5,7 @@ const pricingOptions = [
     icon: Code,
     title: "SITE_VITRINE",
     subtitle: "Site web moderne et responsive",
-    price: "À partir de 2 500€",
+    price: "À partir de 800€",
     features: [
       "Design sur mesure",
       "Responsive mobile/desktop",
@@ -19,7 +19,7 @@ const pricingOptions = [
     icon: Zap,
     title: "APPLICATION_WEB",
     subtitle: "Solution complète avec backend",
-    price: "À partir de 5 000€",
+    price: "À partir de 2500€",
     features: [
       "Interface utilisateur avancée",
       "Base de données",
@@ -33,7 +33,7 @@ const pricingOptions = [
     icon: Terminal,
     title: "AUTOMATISATION",
     subtitle: "Scripts et intégrations sur mesure",
-    price: "À partir de 1 200€",
+    price: "À partir de 100",
     features: [
       "Analyse des besoins",
       "Scripts personnalisés",
@@ -89,22 +89,22 @@ export function BrochureContent({ forPDF = false }: BrochureContentProps) {
       {/* About Section */}
       <div className="mb-12">
         <h2 className={`text-3xl font-bold mb-6 ${forPDF ? 'print:text-blue-600 text-blue-600' : 'text-electric-blue'}`}>
-          QUI SOMMES-NOUS ?
+          QUI SUIS-JE ?
         </h2>
         <p className={`leading-relaxed mb-4 ${forPDF ? 'print:text-gray-800 text-gray-800' : 'text-gray-300'}`}>
           404Factory est une agence spécialisée dans le développement web moderne et l'automatisation.
-          Nous transformons vos idées en solutions numériques performantes et sur mesure.
+          Je transforme vos idées en solutions numériques performantes et sur mesure.
         </p>
         <p className={`leading-relaxed ${forPDF ? 'print:text-gray-800 text-gray-800' : 'text-gray-300'}`}>
-          Notre expertise couvre les technologies les plus récentes : React, Next.js, Node.js, Python,
-          et bien d'autres. Nous accompagnons startups, PME et grandes entreprises dans leur transformation digitale.
+          Mon expertise couvre les technologies les plus récentes : React, Next.js, Node.js, Python,
+          et bien d'autres. J'accompagne startups et PME dans leur transformation digitale.
         </p>
       </div>
 
       {/* Main Services */}
       <div className="mb-12">
         <h2 className={`text-3xl font-bold mb-8 ${forPDF ? 'print:text-blue-600 text-blue-600' : 'text-electric-blue'}`}>
-          NOS SERVICES
+          MES SERVICES
         </h2>
         <div className="grid grid-cols-1 gap-8">
           {pricingOptions.map((option, index) => (
