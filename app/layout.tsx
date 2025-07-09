@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '404Factory',
-  description: 'Created by 404Factory\' creator',
+  description: 'Created by 404Factory\'s creator',
 }
 
 export default function RootLayout({
