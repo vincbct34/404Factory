@@ -39,26 +39,26 @@ export function HeroSection() {
             className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
             data-text="JE TRANSFORME"
           >
-            JE TRANSFORME
+            DE L'ERREUR
+          </div>
+          <div 
+            className={`text-5xl glitch-text ${glitchActive ? "glitch-active" : ""}`}
+            data-text="404"
+          >
+            <span className="text-electric-blue">404</span>
           </div>
           <div 
             className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
-            data-text="VOS ERREURS"
+            data-text="A LA RUSSITE"
           >
-            VOS <span className="text-electric-blue">ERREURS</span>
-          </div>
-          <div 
-            className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
-            data-text="EN SOLUTIONS"
-          >
-            EN SOLUTIONS
+            À LA RÉUSSITE
           </div>
         </div>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light">
           Agence digitale spécialisée dans la création de solutions sur-mesure.
           <br />
-          Parce que chaque bug est une opportunité.
+          Imaginez, créez et transformez vos idées en réalité grâce à nous.
         </p>
 
         {/* CTA Buttons */}
