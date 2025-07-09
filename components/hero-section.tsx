@@ -58,7 +58,7 @@ export function HeroSection() {
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light">
           Agence digitale spécialisée dans la création de solutions sur-mesure.
           <br />
-          Imaginez, créez et transformez vos idées en réalité grâce à nous.
+          Imaginez, créez et transformez vos idées en réalité grâce à mon expertise.
         </p>
 
         {/* CTA Buttons */}
