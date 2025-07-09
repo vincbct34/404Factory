@@ -37,7 +37,7 @@ export function HeroSection() {
         <div className="text-4xl md:text-7xl font-black leading-tight mb-8">
           <div 
             className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
-            data-text="JE TRANSFORME"
+            data-text="DE L'ERREUR"
           >
             DE L'ERREUR
           </div>
@@ -49,7 +49,7 @@ export function HeroSection() {
           </div>
           <div 
             className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
-            data-text="A LA RUSSITE"
+            data-text="À LA RÉUSSITE"
           >
             À LA RÉUSSITE
           </div>
