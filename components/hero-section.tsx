@@ -42,7 +42,7 @@ export function HeroSection() {
             DE L'ERREUR
           </div>
           <div 
-            className={`text-5xl glitch-text ${glitchActive ? "glitch-active" : ""}`}
+            className={`text-5xl md:text-8xl glitch-text ${glitchActive ? "glitch-active" : ""}`}
             data-text="404"
           >
             <span className="text-electric-blue">404</span>
