@@ -64,7 +64,7 @@ export function BrochureSection() {
           </h2>
           <div className="text-gray-400 font-mono mb-8">{"// Mes solutions et leurs prix"}</div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-row gap-4">
             <button
               onClick={handleBrochureRedirect}
               className="flex items-center gap-2 bg-electric-blue hover:bg-electric-blue/80 text-black px-6 py-3 transition-all duration-300 group font-bold"
