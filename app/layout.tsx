@@ -1,23 +1,25 @@
-import type { Metadata } from 'next'
-import Head from 'next/head'
-import './globals.css'
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: '404Factory',
-  description: 'Created by 404Factory\'s creator'
-}
+  description: "Created by 404Factory's creator"
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <head />
       <body>{children}</body>
     </html>
-  )
+  );
 }
