@@ -1,4 +1,5 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
+import Head from 'next/head'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <body>{children}</body>
     </html>
   )
