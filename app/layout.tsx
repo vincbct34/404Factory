@@ -6,11 +6,6 @@ export const metadata: Metadata = {
   description: 'Created by 404Factory\'s creator'
 }
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1.0
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,6 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body>{children}</body>
     </html>
   )
