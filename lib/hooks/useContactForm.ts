@@ -69,7 +69,9 @@ export const useContactForm = () => {
       setState({
         isLoading: false,
         isSuccess: false,
-        error: "Erreur de connexion. Veuillez réessayer.",
+        error:
+          "Erreur de connexion : " +
+          (error instanceof Error ? error.message : "Veuillez réessayer."),
       });
     }
   };

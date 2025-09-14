@@ -47,7 +47,7 @@ export function HeroSection() {
             className={`glitch-text ${glitchActive ? "glitch-active" : ""}`}
             data-text="DE L'ERREUR"
           >
-            DE L'ERREUR
+            DE L&apos;ERREUR
           </div>
           <div
             className={`text-5xl md:text-8xl glitch-text ${glitchActive ? "glitch-active" : ""}`}

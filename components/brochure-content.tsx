@@ -105,15 +105,15 @@ export function BrochureContent({ forPDF = false }: BrochureContentProps) {
           className={`leading-relaxed mb-4 text-sm sm:text-base ${forPDF ? "print:text-gray-800 text-gray-800" : "text-gray-300"}`}
         >
           404Factory est une agence spécialisée dans le développement web
-          moderne et l'automatisation. Je transforme vos idées en solutions
+          moderne et l&apos;automatisation. Je transforme vos idées en solutions
           numériques performantes et sur mesure.
         </p>
         <p
           className={`leading-relaxed text-sm sm:text-base ${forPDF ? "print:text-gray-800 text-gray-800" : "text-gray-300"}`}
         >
           Mon expertise couvre les technologies les plus récentes : React,
-          Next.js, Node.js, Python, et bien d'autres. J'accompagne startups et
-          PME dans leur transformation digitale.
+          Next.js, Node.js, Python, et bien d&apos;autres. J&apos;accompagne
+          startups et PME dans leur transformation digitale.
         </p>
       </div>
 

@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { ChevronRight, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
     name: "opera-montpellier.ts",
+    image: "/opera-montpellier.png",
     type: "CRM",
     tech: "Next.js, Node.js, SQLite",
     status: "DELIVERED",
@@ -15,6 +17,7 @@ const projects = [
   },
   {
     name: "404factory.js",
+    image: "404-factory.png",
     type: "Website",
     tech: "Next.js, Vercel",
     status: "DEPLOYED",
@@ -23,6 +26,7 @@ const projects = [
   },
   {
     name: "mypandoc.hs",
+    image: "mypandoc.png",
     type: "Tool",
     tech: "Haskell",
     status: "DELIVERED",
@@ -33,6 +37,7 @@ const projects = [
   },
   {
     name: "zappy.cpp",
+    image: "zappy.png",
     type: "Game",
     tech: "C++, C, Python",
     status: "DELIVERED",
@@ -72,24 +77,22 @@ export function ProjectsSection() {
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className={`cursor-pointer hover:bg-gray-800/50 p-2 -mx-2 rounded transition-colors ${
-                    selectedProject === index ? "bg-gray-800/50" : ""
-                  }`}
+                  className={`cursor-pointer hover:bg-gray-800/50 p-2 -mx-2 rounded transition-colors ${selectedProject === index ? "bg-gray-800/50" : ""
+                    }`}
                   onClick={() => setSelectedProject(index)}
                 >
                   <div className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-electric-blue" />
                     <span className="text-white">{project.name}</span>
                     <span
-                      className={`ml-auto text-xs px-2 py-1 rounded ${
-                        project.status === "DEPLOYED"
+                      className={`ml-auto text-xs px-2 py-1 rounded ${project.status === "DEPLOYED"
                           ? "bg-green-900 text-green-300"
                           : project.status === "RUNNING"
                             ? "bg-blue-900 text-blue-300"
                             : project.status === "DELIVERED"
                               ? "bg-purple-900 text-purple-300"
                               : "bg-yellow-900 text-yellow-300"
-                      }`}
+                        }`}
                     >
                       {project.status}
                     </span>
@@ -112,7 +115,15 @@ export function ProjectsSection() {
                 Type: {projects[selectedProject].type} | Tech:{" "}
                 {projects[selectedProject].tech}
               </div>
-              <p className="text-gray-300 mb-6">
+              <div className="flex justify-center pt-6">
+                <Image
+                  src={projects[selectedProject].image}
+                  alt={projects[selectedProject].image.toString()}
+                  width={500}
+                  height={500}
+                />
+              </div>
+              <p className="text-center text-gray-300 mb-6">
                 {projects[selectedProject].description}
               </p>
               <a
