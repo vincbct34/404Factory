@@ -1,18 +1,18 @@
-import nodemailer from 'nodemailer'
-import type { ContactFormData } from '@/lib/types/contact'
+import nodemailer from "nodemailer";
+import type { ContactFormData } from "@/lib/types/contact";
 
 // Configuration du transporteur email
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '587'),
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: parseInt(process.env.SMTP_PORT || "587"),
     secure: false, // true pour 465, false pour les autres ports
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
-  })
-}
+  });
+};
 
 // Template HTML pour l'email
 const createEmailTemplate = (data: ContactFormData) => `
@@ -53,31 +53,33 @@ const createEmailTemplate = (data: ContactFormData) => `
       
       <div class="field">
         <div class="label">💬 Message:</div>
-        <div class="value">${data.message.replace(/\n/g, '<br>')}</div>
+        <div class="value">${data.message.replace(/\n/g, "<br>")}</div>
       </div>
     </div>
   </div>
 </body>
 </html>
-`
+`;
 
-export const sendContactEmail = async (data: ContactFormData): Promise<boolean> => {
+export const sendContactEmail = async (
+  data: ContactFormData,
+): Promise<boolean> => {
   try {
-    const transporter = createTransporter()
+    const transporter = createTransporter();
 
     // Email pour vous (notification)
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || 'factory404@outlook.fr',
+      to: process.env.CONTACT_EMAIL || "factory404@outlook.fr",
       subject: `🚀 Nouveau contact: ${data.name} - ${data.project}`,
       html: createEmailTemplate(data),
-    })
+    });
 
     // Email de confirmation pour le client
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: data.email,
-      subject: '✅ Votre message a été reçu - 404Factory',
+      subject: "✅ Votre message a été reçu - 404Factory",
       html: `
         <!DOCTYPE html>
         <html>
@@ -117,11 +119,11 @@ export const sendContactEmail = async (data: ContactFormData): Promise<boolean> 
         </body>
         </html>
       `,
-    })
+    });
 
-    return true
+    return true;
   } catch (error) {
-    console.error('Erreur envoi email:', error)
-    return false
+    console.error("Erreur envoi email:", error);
+    return false;
   }
-}
+};

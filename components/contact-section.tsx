@@ -1,23 +1,31 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect } from "react"
+import type React from "react";
+import { useState, useEffect } from "react";
 
-import { Send, MapPin, Mail, Phone, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
-import { useContactForm } from "@/lib/hooks/useContactForm"
+import {
+  Send,
+  MapPin,
+  Mail,
+  Phone,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
+import { useContactForm } from "@/lib/hooks/useContactForm";
 
 export function ContactSection() {
-  const { formData, state, updateFormData, submitForm } = useContactForm()
-  const [isHydrated, setIsHydrated] = useState(false)
+  const { formData, state, updateFormData, submitForm } = useContactForm();
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    setIsHydrated(true)
-  }, [])
+    setIsHydrated(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    await submitForm()
-  }
+    e.preventDefault();
+    await submitForm();
+  };
 
   return (
     <section id="contact" className="py-20 px-6 bg-gray-900/20">
@@ -26,7 +34,9 @@ export function ContactSection() {
           <h2 className="text-5xl md:text-6xl font-black mb-4">
             CONTACT<span className="text-electric-blue">.</span>
           </h2>
-          <div className="text-gray-400 font-mono">{"// Démarrons votre projet"}</div>
+          <div className="text-gray-400 font-mono">
+            {"// Démarrons votre projet"}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -39,7 +49,9 @@ export function ContactSection() {
               <span className="ml-4 text-sm text-gray-400">contact-form</span>
             </div>
             <div className="p-6">
-              <div className="text-electric-blue font-mono text-sm mb-4">user@404factory:~$ ./start-project</div>
+              <div className="text-electric-blue font-mono text-sm mb-4">
+                user@404factory:~$ ./start-project
+              </div>
 
               {/* Messages de statut */}
               <div className="mb-4 min-h-[1rem]">
@@ -58,13 +70,18 @@ export function ContactSection() {
                 )}
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4 font-mono text-sm">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 font-mono text-sm"
+              >
                 <div>
-                  <label className="text-gray-400 block mb-1">{"> Nom du client:"}</label>
+                  <label className="text-gray-400 block mb-1">
+                    {"> Nom du client:"}
+                  </label>
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => updateFormData('name', e.target.value)}
+                    onChange={(e) => updateFormData("name", e.target.value)}
                     className="w-full bg-transparent border border-gray-600 px-3 py-2 text-white focus:border-electric-blue focus:outline-none"
                     placeholder="John Doe"
                     disabled={state.isLoading}
@@ -72,11 +89,13 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="text-gray-400 block mb-1">{"> Email:"}</label>
+                  <label className="text-gray-400 block mb-1">
+                    {"> Email:"}
+                  </label>
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => updateFormData('email', e.target.value)}
+                    onChange={(e) => updateFormData("email", e.target.value)}
                     className="w-full bg-transparent border border-gray-600 px-3 py-2 text-white focus:border-electric-blue focus:outline-none"
                     placeholder="john@example.com"
                     disabled={state.isLoading}
@@ -84,10 +103,12 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="text-gray-400 block mb-1">{"> Type de projet:"}</label>
+                  <label className="text-gray-400 block mb-1">
+                    {"> Type de projet:"}
+                  </label>
                   <select
                     value={formData.project}
-                    onChange={(e) => updateFormData('project', e.target.value)}
+                    onChange={(e) => updateFormData("project", e.target.value)}
                     className="w-full bg-black border border-gray-600 px-3 py-2 text-white focus:border-electric-blue focus:outline-none"
                     disabled={state.isLoading}
                   >
@@ -99,10 +120,12 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="text-gray-400 block mb-1">{"> Description du projet:"}</label>
+                  <label className="text-gray-400 block mb-1">
+                    {"> Description du projet:"}
+                  </label>
                   <textarea
                     value={formData.message}
-                    onChange={(e) => updateFormData('message', e.target.value)}
+                    onChange={(e) => updateFormData("message", e.target.value)}
                     rows={4}
                     className="w-full bg-transparent border border-gray-600 px-3 py-2 text-white focus:border-electric-blue focus:outline-none resize-none"
                     placeholder="Décrivez votre projet..."
@@ -120,7 +143,7 @@ export function ContactSection() {
                   ) : (
                     <Send className="w-4 h-4" />
                   )}
-                  {state.isLoading ? 'ENVOI_EN_COURS...' : 'ENVOYER_MESSAGE'}
+                  {state.isLoading ? "ENVOI_EN_COURS..." : "ENVOYER_MESSAGE"}
                 </button>
               </form>
             </div>
@@ -129,7 +152,9 @@ export function ContactSection() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="border border-gray-700 p-6 bg-gray-900/40">
-              <h3 className="text-2xl font-bold mb-6 text-electric-blue">Informations de contact</h3>
+              <h3 className="text-2xl font-bold mb-6 text-electric-blue">
+                Informations de contact
+              </h3>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -189,5 +214,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

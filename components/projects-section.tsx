@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ChevronRight, ExternalLink } from "lucide-react"
+import { useState } from "react";
+import { ChevronRight, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -9,7 +9,8 @@ const projects = [
     type: "CRM",
     tech: "Next.js, Node.js, SQLite",
     status: "DELIVERED",
-    description: "Plateforme CRM complète avec gestion des utilisateurs et des réservations",
+    description:
+      "Plateforme CRM complète avec gestion des utilisateurs et des réservations",
     github: "https://github.com/vincbct34/Projet-Opera-Public",
   },
   {
@@ -25,8 +26,10 @@ const projects = [
     type: "Tool",
     tech: "Haskell",
     status: "DELIVERED",
-    description: "Convertisseur de documents inspiré de Pandoc, supporte le markdown, le json et l'xml.",
-    github: "https://github.com/vincbct34/Tek2-EPITECH/tree/main/Functionnal%20Programming/mypandoc",
+    description:
+      "Convertisseur de documents inspiré de Pandoc, supporte le markdown, le json et l'xml.",
+    github:
+      "https://github.com/vincbct34/Tek2-EPITECH/tree/main/Functionnal%20Programming/mypandoc",
   },
   {
     name: "zappy.cpp",
@@ -35,11 +38,11 @@ const projects = [
     status: "DELIVERED",
     description: "Simulation multijoueur en réseau sur la planète Trantor.",
     github: "https://github.com/vincbct34/Tek2-EPITECH/tree/main/zappy",
-  }
-]
+  },
+];
 
 export function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState(0)
+  const [selectedProject, setSelectedProject] = useState(0);
 
   return (
     <section id="projects" className="py-20 px-6 bg-gray-900/20">
@@ -48,7 +51,9 @@ export function ProjectsSection() {
           <h2 className="text-5xl md:text-6xl font-black mb-4">
             PROJETS<span className="text-electric-blue">.</span>
           </h2>
-          <div className="text-gray-400 font-mono">{"// Portfolio de réalisations"}</div>
+          <div className="text-gray-400 font-mono">
+            {"// Portfolio de réalisations"}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -61,26 +66,30 @@ export function ProjectsSection() {
               <span className="ml-4 text-sm text-gray-400">terminal</span>
             </div>
             <div className="p-6 font-mono text-sm">
-              <div className="text-electric-blue mb-4">user@404factory:~/projects$ ls -la</div>
+              <div className="text-electric-blue mb-4">
+                user@404factory:~/projects$ ls -la
+              </div>
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className={`cursor-pointer hover:bg-gray-800/50 p-2 -mx-2 rounded transition-colors ${selectedProject === index ? "bg-gray-800/50" : ""
-                    }`}
+                  className={`cursor-pointer hover:bg-gray-800/50 p-2 -mx-2 rounded transition-colors ${
+                    selectedProject === index ? "bg-gray-800/50" : ""
+                  }`}
                   onClick={() => setSelectedProject(index)}
                 >
                   <div className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-electric-blue" />
                     <span className="text-white">{project.name}</span>
                     <span
-                      className={`ml-auto text-xs px-2 py-1 rounded ${project.status === "DEPLOYED"
-                        ? "bg-green-900 text-green-300"
-                        : project.status === "RUNNING"
-                          ? "bg-blue-900 text-blue-300"
-                          : project.status === "DELIVERED"
-                            ? "bg-purple-900 text-purple-300"
-                            : "bg-yellow-900 text-yellow-300"
-                        }`}
+                      className={`ml-auto text-xs px-2 py-1 rounded ${
+                        project.status === "DEPLOYED"
+                          ? "bg-green-900 text-green-300"
+                          : project.status === "RUNNING"
+                            ? "bg-blue-900 text-blue-300"
+                            : project.status === "DELIVERED"
+                              ? "bg-purple-900 text-purple-300"
+                              : "bg-yellow-900 text-yellow-300"
+                      }`}
                     >
                       {project.status}
                     </span>
@@ -96,11 +105,16 @@ export function ProjectsSection() {
           {/* Project Details */}
           <div className="space-y-6">
             <div className="border border-gray-700 p-6 bg-gray-900/40">
-              <h3 className="text-2xl font-bold mb-2 text-electric-blue">{projects[selectedProject].name}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-electric-blue">
+                {projects[selectedProject].name}
+              </h3>
               <div className="text-gray-400 mb-4">
-                Type: {projects[selectedProject].type} | Tech: {projects[selectedProject].tech}
+                Type: {projects[selectedProject].type} | Tech:{" "}
+                {projects[selectedProject].tech}
               </div>
-              <p className="text-gray-300 mb-6">{projects[selectedProject].description}</p>
+              <p className="text-gray-300 mb-6">
+                {projects[selectedProject].description}
+              </p>
               <a
                 href={projects[selectedProject].github}
                 target="_blank"
@@ -127,5 +141,5 @@ export function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,14 +1,14 @@
-import type { Metadata, Viewport } from 'next';
-import './globals.css';
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: '404Factory',
-  description: "Created by 404Factory's creator"
+  title: "404Factory",
+  description: "Created by 404Factory's creator",
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1.0
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body>{children}</body>
+      <body suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }

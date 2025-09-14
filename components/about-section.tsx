@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { useLastCommit } from '@/lib/hooks/useLastCommit'
+import { useLastCommit } from "@/lib/hooks/useLastCommit";
 
 export function AboutSection() {
-  const { data: commitData, loading } = useLastCommit()
+  const { data: commitData, loading } = useLastCommit();
 
   return (
     <section id="about" className="py-20 px-6">
@@ -22,8 +22,8 @@ export function AboutSection() {
             <div>
               <div className="text-white font-bold mb-2">## Ma Mission</div>
               <p>
-                Transformer les défis techniques en opportunités créatives. Je crois que chaque erreur 404 cache une
-                solution innovante.
+                Transformer les défis techniques en opportunités créatives. Je
+                crois que chaque erreur 404 cache une solution innovante.
               </p>
             </div>
 
@@ -38,9 +38,21 @@ export function AboutSection() {
             </div>
 
             <div>
-              <div className="text-white font-bold mb-2">## Stack Technique</div>
+              <div className="text-white font-bold mb-2">
+                ## Stack Technique
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                {["React", "Next.js", "Node.js", "Python", "TypeScript", "Tailwind", "C++", "C", "Haskell"].map((tech) => (
+                {[
+                  "React",
+                  "Next.js",
+                  "Node.js",
+                  "Python",
+                  "TypeScript",
+                  "Tailwind",
+                  "C++",
+                  "C",
+                  "Haskell",
+                ].map((tech) => (
                   <div
                     key={tech}
                     className="bg-black/50 px-3 py-2 text-center border border-gray-700 hover:border-electric-blue/50 transition-colors"
@@ -53,7 +65,7 @@ export function AboutSection() {
 
             <div>
               <div className="text-white font-bold mb-2">## Contact</div>
-                <p>
+              <p>
                 <span className="text-electric-blue">Email: </span>
                 <a
                   href="mailto:factory404@outlook.fr"
@@ -71,12 +83,15 @@ export function AboutSection() {
                 >
                   @vincbct34
                 </a>
-                </p>
+              </p>
             </div>
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-700 text-gray-500">
-            Last updated: {loading ? 'Chargement...' : commitData?.formatted || new Date().toLocaleDateString('fr-FR')}
+            Last updated:{" "}
+            {loading
+              ? "Chargement..."
+              : commitData?.formatted || new Date().toLocaleDateString("fr-FR")}
             {commitData?.fallback && (
               <span className="text-xs ml-2 opacity-75">(fallback)</span>
             )}
@@ -84,5 +99,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

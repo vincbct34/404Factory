@@ -20,6 +20,7 @@ Une agence digitale moderne spécialisée dans la création de solutions web sur
 ## 🛠 Technologies
 
 ### Frontend
+
 - **Framework** : [Next.js 15](https://nextjs.org/) avec App Router
 - **Language** : TypeScript
 - **Styling** : Tailwind CSS avec animations personnalisées
@@ -27,11 +28,13 @@ Une agence digitale moderne spécialisée dans la création de solutions web sur
 - **Forms** : React Hook Form avec validation Zod
 
 ### Backend
+
 - **API Routes** : Next.js API Routes
 - **Email** : Nodemailer pour l'envoi d'emails
 - **Validation** : Zod pour la validation des données
 
 ### Outils de développement
+
 - **Build Tool** : Next.js compiler
 - **CSS** : PostCSS avec Tailwind CSS
 - **Type Checking** : TypeScript
@@ -39,24 +42,28 @@ Une agence digitale moderne spécialisée dans la création de solutions web sur
 ## 🚀 Installation
 
 ### Prérequis
-- Node.js 18+ 
+
+- Node.js 18+
 - npm ou yarn
 
 ### Étapes d'installation
 
 1. **Cloner le repository**
+
 ```bash
 git clone [votre-repo-url]
 cd 404Factory
 ```
 
 2. **Installer les dépendances**
+
 ```bash
 npm install
 ```
 
 3. **Configuration de l'environnement**
-Créer un fichier `.env.local` à la racine :
+   Créer un fichier `.env.local` à la racine :
+
 ```env
 # Configuration SMTP pour l'envoi d'emails
 SMTP_HOST=your-smtp-host
@@ -69,6 +76,7 @@ CONTACT_EMAIL=contact@404factory.fr
 ```
 
 4. **Lancer le serveur de développement**
+
 ```bash
 npm run dev
 ```
@@ -103,22 +111,27 @@ Le site sera accessible sur [http://localhost:3000](http://localhost:3000)
 ## 🎨 Sections du site
 
 ### 1. Hero Section
+
 - Animation 404 avec effet de glitch
 - Message principal avec call-to-action
 - Éléments flottants pour l'ambiance cyberpunk
 
 ### 2. Services
+
 - **Sites sur-mesure** : Développement web moderne
 - **Automatisations** : Scripts et intégrations personnalisées
 - **Consulting Tech** : Audit et architecture technique
 
 ### 3. Projets
+
 Showcase des réalisations avec technologies utilisées
 
 ### 4. À propos
+
 Présentation de l'approche et de la philosophie
 
 ### 5. Contact
+
 Formulaire fonctionnel avec validation et envoi d'email
 
 ## 🔧 Scripts disponibles
@@ -140,12 +153,16 @@ npm run lint
 ## 🎨 Customisation
 
 ### Couleurs
+
 Les couleurs principales sont définies dans `tailwind.config.ts` :
+
 - **Electric Blue** : Couleur d'accent principale
 - **Noir/Gris** : Palette sombre pour le thème cyberpunk
 
 ### Animations
+
 Les animations personnalisées sont dans `globals.css` :
+
 - Effet de glitch
 - Animations de pulse
 - Transitions fluides
@@ -161,13 +178,17 @@ Pour que le formulaire de contact fonctionne, configurez :
 ## 🚀 Déploiement
 
 ### Vercel (Recommandé)
+
 ```bash
 npm run build
 ```
+
 Puis déployez sur [Vercel](https://vercel.com)
 
 ### Autres plateformes
+
 Le projet est compatible avec toutes les plateformes supportant Next.js :
+
 - Netlify
 - Railway
 - DigitalOcean App Platform
@@ -187,9 +208,10 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ## 📞 Contact
 
 Pour toute question ou demande de collaboration :
+
 - **Website** : [404-factory.com](https://404-factory.com)
 - **Email** : factory404@outlook.fr
 
 ---
 
-*"Chaque bug est une opportunité, chaque erreur un nouveau départ."* - 404Factory
+_"Chaque bug est une opportunité, chaque erreur un nouveau départ."_ - 404Factory

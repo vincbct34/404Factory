@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { BrochureContent } from "@/components/brochure-content"
-import { ArrowLeft, Download } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { BrochureContent } from "@/components/brochure-content";
+import { ArrowLeft, Download } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function BrochurePage() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handlePrint = () => {
-    window.print()
-  }
+    window.print();
+  };
 
   const handleBack = () => {
-    router.back()
-  }
+    router.back();
+  };
 
   return (
     <div className="min-h-screen bg-black text-white print:bg-white print:text-black">
@@ -49,5 +49,5 @@ export default function BrochurePage() {
         <BrochureContent forPDF={false} />
       </div>
     </div>
-  )
+  );
 }

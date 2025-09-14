@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Download, Code, Zap, Terminal } from "lucide-react"
+import { Download, Code, Zap, Terminal } from "lucide-react";
 
 const pricingOptions = [
   {
@@ -14,9 +14,9 @@ const pricingOptions = [
       "Optimisation SEO",
       "Hébergement 1 an inclus",
       "Formation à l'administration",
-      "Support 3 mois"
+      "Support 3 mois",
     ],
-    popular: false
+    popular: false,
   },
   {
     icon: Zap,
@@ -29,9 +29,9 @@ const pricingOptions = [
       "API REST/GraphQL",
       "Authentification",
       "Tableaux de bord",
-      "Tests automatisés"
+      "Tests automatisés",
     ],
-    popular: true
+    popular: true,
   },
   {
     icon: Terminal,
@@ -44,16 +44,16 @@ const pricingOptions = [
       "Intégrations API",
       "Documentation complète",
       "Formation utilisateur",
-      "Maintenance 6 mois"
+      "Maintenance 6 mois",
     ],
-    popular: false
-  }
-]
+    popular: false,
+  },
+];
 
 export function BrochureSection() {
   const handleBrochureRedirect = () => {
-    window.location.href = '/brochure';
-  }
+    window.location.href = "/brochure";
+  };
 
   return (
     <section id="brochure" className="py-20 px-6">
@@ -62,7 +62,9 @@ export function BrochureSection() {
           <h2 className="text-5xl md:text-6xl font-black mb-4">
             TARIFS<span className="text-electric-blue">.</span>
           </h2>
-          <div className="text-gray-400 font-mono mb-8">{"// Mes solutions et leurs prix"}</div>
+          <div className="text-gray-400 font-mono mb-8">
+            {"// Mes solutions et leurs prix"}
+          </div>
 
           <div className="flex flex-row gap-4">
             <button
@@ -80,10 +82,11 @@ export function BrochureSection() {
           {pricingOptions.map((option, index) => (
             <div
               key={index}
-              className={`relative border p-8 transition-all duration-300 hover:scale-105 ${option.popular
-                  ? 'border-electric-blue bg-electric-blue/5'
-                  : 'border-gray-800 hover:border-electric-blue/50 bg-gray-900/20'
-                }`}
+              className={`relative border p-8 transition-all duration-300 hover:scale-105 ${
+                option.popular
+                  ? "border-electric-blue bg-electric-blue/5"
+                  : "border-gray-800 hover:border-electric-blue/50 bg-gray-900/20"
+              }`}
             >
               {option.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -99,11 +102,16 @@ export function BrochureSection() {
               </div>
 
               <p className="text-gray-400 text-sm mb-4">{option.subtitle}</p>
-              <div className="text-2xl font-black text-electric-blue mb-6">{option.price}</div>
+              <div className="text-2xl font-black text-electric-blue mb-6">
+                {option.price}
+              </div>
 
               <ul className="space-y-2">
                 {option.features.slice(0, 3).map((feature, idx) => (
-                  <li key={idx} className="text-sm text-gray-300 flex items-center gap-2">
+                  <li
+                    key={idx}
+                    className="text-sm text-gray-300 flex items-center gap-2"
+                  >
                     <div className="w-1.5 h-1.5 bg-electric-blue"></div>
                     {feature}
                   </li>
@@ -114,5 +122,5 @@ export function BrochureSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
