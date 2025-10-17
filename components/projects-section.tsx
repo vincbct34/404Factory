@@ -17,7 +17,7 @@ const projects = [
   },
   {
     name: "404factory.js",
-    image: "404-factory.png",
+    image: "/404-factory.png",
     type: "Website",
     tech: "Next.js, Vercel",
     status: "DEPLOYED",
@@ -26,7 +26,7 @@ const projects = [
   },
   {
     name: "mypandoc.hs",
-    image: "mypandoc.png",
+    image: "/mypandoc.png",
     type: "Tool",
     tech: "Haskell",
     status: "DELIVERED",
@@ -37,7 +37,7 @@ const projects = [
   },
   {
     name: "zappy.cpp",
-    image: "zappy.png",
+    image: "/zappy.png",
     type: "Game",
     tech: "C++, C, Python",
     status: "DELIVERED",
@@ -123,7 +123,7 @@ export function ProjectsSection() {
                   height={500}
                 />
               </div>
-              <p className="text-center text-gray-300 mb-6">
+              <p className="text-center text-gray-300 my-6">
                 {projects[selectedProject].description}
               </p>
               <a
