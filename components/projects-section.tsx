@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const projects = [
   {
@@ -48,6 +49,7 @@ const projects = [
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <section id="projects" className="py-20 px-6 bg-gray-900/20">
@@ -79,7 +81,10 @@ export function ProjectsSection() {
                   key={index}
                   className={`cursor-pointer hover:bg-gray-800/50 p-2 -mx-2 rounded transition-colors ${selectedProject === index ? "bg-gray-800/50" : ""
                     }`}
-                  onClick={() => setSelectedProject(index)}
+                  onClick={() => {
+                    setSelectedProject(index);
+                    setImageLoaded(false);
+                  }}
                 >
                   <div className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-electric-blue" />
@@ -116,11 +121,16 @@ export function ProjectsSection() {
                 {projects[selectedProject].tech}
               </div>
               <div className="flex justify-center pt-6">
+                {!imageLoaded && (
+                  <Skeleton className="w-[500px] h-[500px]" />
+                )}
                 <Image
                   src={projects[selectedProject].image}
                   alt={projects[selectedProject].image.toString()}
                   width={500}
                   height={500}
+                  onLoad={() => setImageLoaded(true)}
+                  className={!imageLoaded ? "hidden" : ""}
                 />
               </div>
               <p className="text-center text-gray-300 my-6">
