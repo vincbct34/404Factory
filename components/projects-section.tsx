@@ -49,7 +49,9 @@ const projects = [
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<{ [key: number]: boolean }>(
+    {}
+  );
 
   return (
     <section id="projects" className="py-20 px-6 bg-gray-900/20">
@@ -83,7 +85,6 @@ export function ProjectsSection() {
                     }`}
                   onClick={() => {
                     setSelectedProject(index);
-                    setImageLoaded(false);
                   }}
                 >
                   <div className="flex items-center gap-2">
@@ -121,16 +122,22 @@ export function ProjectsSection() {
                 {projects[selectedProject].tech}
               </div>
               <div className="flex justify-center pt-6">
-                {!imageLoaded && (
+                {!imageLoaded[selectedProject] && (
                   <Skeleton className="w-[500px] h-[500px]" />
                 )}
                 <Image
                   src={projects[selectedProject].image}
-                  alt={projects[selectedProject].image.toString()}
+                  alt={projects[selectedProject].name}
                   width={500}
                   height={500}
-                  onLoad={() => setImageLoaded(true)}
-                  className={!imageLoaded ? "hidden" : ""}
+                  onLoad={() =>
+                    setImageLoaded((prev) => ({
+                      ...prev,
+                      [selectedProject]: true,
+                    }))
+                  }
+                  className={!imageLoaded[selectedProject] ? "hidden" : ""}
+                  priority={selectedProject === 0}
                 />
               </div>
               <p className="text-center text-gray-300 my-6">
