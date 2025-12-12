@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -49,9 +49,13 @@ const projects = [
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState<{ [key: number]: boolean }>(
-    {}
-  );
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setImageLoaded(false);
+    setImageError(false);
+  }, [selectedProject]);
 
   return (
     <section id="projects" className="py-20 px-6 bg-gray-900/20">
@@ -122,23 +126,34 @@ export function ProjectsSection() {
                 {projects[selectedProject].tech}
               </div>
               <div className="flex justify-center pt-6">
-                {!imageLoaded[selectedProject] && (
-                  <Skeleton className="w-[500px] h-[500px]" />
-                )}
-                <Image
-                  src={projects[selectedProject].image}
-                  alt={projects[selectedProject].name}
-                  width={500}
-                  height={500}
-                  onLoad={() =>
-                    setImageLoaded((prev) => ({
-                      ...prev,
-                      [selectedProject]: true,
-                    }))
-                  }
-                  className={!imageLoaded[selectedProject] ? "hidden" : ""}
-                  priority={selectedProject === 0}
-                />
+                <div className="relative w-full max-w-[500px] aspect-square">
+                  {(!imageLoaded || imageError) && (
+                    <Skeleton className="absolute inset-0 w-full h-full" />
+                  )}
+                  {!imageError && (
+                    <Image
+                      src={projects[selectedProject].image}
+                      alt={projects[selectedProject].name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      className={`object-contain transition-opacity duration-300 ${
+                        imageLoaded ? "opacity-100" : "opacity-0"
+                      }`}
+                      onLoad={() => setImageLoaded(true)}
+                      onError={() => {
+                        setImageError(true);
+                        setImageLoaded(false);
+                      }}
+                      priority={selectedProject === 0}
+                      unoptimized
+                    />
+                  )}
+                  {imageError && (
+                    <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                      Image non disponible
+                    </div>
+                  )}
+                </div>
               </div>
               <p className="text-center text-gray-300 my-6">
                 {projects[selectedProject].description}
