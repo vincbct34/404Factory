@@ -1,27 +1,36 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# debug
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# env files
-.env*
+node_modules
+package-lock.json
+dist
+dist-ssr
+*.local
 
-# vercel
-.vercel
+# Environment files
+.env
+.env.local
+.env.production
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Old Next.js files (to be removed)
+app-old-nextjs
+components-old-nextjs
+lib-old-nextjs
+404Factory-new
