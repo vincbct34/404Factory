@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Main application entry point with routing configuration
+ * @module App
+ */
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "@/components/layout/Navigation";
 import {
   Hero,
@@ -7,21 +13,27 @@ import {
   Pricing,
   Contact,
 } from "@/components/sections";
+import { NotFound } from "@/pages";
 import Snowfall from "react-snowfall";
+import { LanguageProvider, useLanguage } from "@/hooks/useLanguage";
 
-function App() {
+/**
+ * Home page component containing all main sections
+ * Includes animated background, navigation, and footer
+ */
+function HomePage() {
+  const { t } = useLanguage();
+
   return (
     <div className="noise-overlay">
-      {/* Animated gradient background */}
-      <div className="gradient-bg" />
+      {/* Animated gradient background with snowfall effect */}
+      <div className="gradient-bg">
+        <Snowfall radius={[5, 5]} />
+      </div>
 
-      {/* Snowfall */}
-      <Snowfall />
-
-      {/* Navigation */}
       <Navigation />
 
-      {/* Main content */}
+      {/* Main content sections */}
       <main>
         <Hero />
         <Services />
@@ -35,11 +47,28 @@ function App() {
       <footer className="py-8 border-t border-white/10">
         <div className="container text-center">
           <p className="text-gray-500 text-sm font-mono">
-            © {new Date().getFullYear()} 404Factory. Tous droits réservés.
+            © {new Date().getFullYear()} 404Factory. {t.footer.rights}
           </p>
         </div>
       </footer>
     </div>
+  );
+}
+
+/**
+ * Root application component
+ * Sets up providers and routing
+ */
+function App() {
+  return (
+    <LanguageProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 

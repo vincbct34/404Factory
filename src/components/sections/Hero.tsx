@@ -1,12 +1,23 @@
+/**
+ * @fileoverview Hero section component - main landing area of the website
+ * @module components/sections/Hero
+ */
+
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { fadeInUp, staggerContainer, glitchVariants } from "@/lib/animations";
+import { useLanguage } from "@/hooks/useLanguage";
 
+/**
+ * Hero section with animated headline, 404 branding, and call-to-action
+ * Features periodic glitch effect on text and staggered reveal animation
+ */
 export function Hero() {
   const controls = useAnimation();
+  const { t } = useLanguage();
 
+  // Trigger glitch effect periodically
   useEffect(() => {
-    // Trigger glitch effect periodically
     const interval = setInterval(() => {
       controls.start("glitch");
       setTimeout(() => {
@@ -17,6 +28,7 @@ export function Hero() {
     return () => clearInterval(interval);
   }, [controls]);
 
+  /** Smooth scrolls to the contact section */
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -32,7 +44,7 @@ export function Hero() {
       {/* Animated gradient mesh background */}
       <div className="gradient-bg" />
 
-      {/* Floating code elements */}
+      {/* Floating decorative elements */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 0.3, x: 0 }}
@@ -46,14 +58,14 @@ export function Hero() {
         className="absolute bottom-32 right-10 text-electric font-mono text-sm"
       ></motion.div>
 
-      {/* Main content */}
+      {/* Main content container with staggered animations */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
         className="text-center z-10 max-w-6xl mx-auto px-6"
       >
-        {/* Error code */}
+        {/* 404 Error code branding */}
         <motion.div variants={fadeInUp} className="mb-8">
           <div className="text-[8rem] md:text-[12rem] font-black text-electric/10 leading-none select-none">
             404
@@ -63,7 +75,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Main headline */}
+        {/* Main headline with glitch effect */}
         <motion.div variants={fadeInUp} className="mb-8">
           <div className="text-4xl md:text-7xl font-black leading-tight">
             <motion.span
@@ -72,11 +84,11 @@ export function Hero() {
               initial="idle"
               className="inline-block"
             >
-              DE L'ERREUR
+              {t.hero.fromError}
             </motion.span>
           </div>
           <div className="text-5xl md:text-8xl font-black my-2">
-            <span className="text-electric glow-text">404</span>
+            <span className="text-electric glow-text">{t.hero.code}</span>
           </div>
           <div className="text-4xl md:text-7xl font-black leading-tight">
             <motion.span
@@ -85,7 +97,7 @@ export function Hero() {
               initial="idle"
               className="inline-block"
             >
-              À LA RÉUSSITE
+              {t.hero.toSuccess}
             </motion.span>
           </div>
         </motion.div>
@@ -95,17 +107,17 @@ export function Hero() {
           variants={fadeInUp}
           className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light"
         >
-          Agence digitale spécialisée dans la création de solutions sur-mesure.
+          {t.hero.subtitle}
           <br />
-          <span className="text-electric">Imaginez, créez</span> et transformez
-          vos idées en réalité.
+          <span className="text-electric">{t.hero.subtitleHighlight}</span>{" "}
+          {t.hero.subtitleEnd}
         </motion.p>
 
-        {/* CTA Button */}
+        {/* Call-to-action button */}
         <motion.div variants={fadeInUp}>
           <button onClick={scrollToContact} className="btn-primary text-lg">
             <span className="font-mono">{">"}</span>
-            DÉMARRER_PROJET
+            {t.hero.cta}
           </button>
         </motion.div>
       </motion.div>

@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Projects section component with interactive project showcase
+ * @module components/sections/Projects
+ */
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ExternalLink, Loader2 } from "lucide-react";
@@ -9,59 +14,42 @@ import {
 } from "@/lib/animations";
 import { Terminal, GlassCard } from "@/components/ui";
 import { useOpenGraphImage } from "@/hooks/useOpenGraphImage";
+import { useLanguage } from "@/hooks/useLanguage";
 import type { Project } from "@/lib/types";
 
-const projects: Project[] = [
+/** Project data without translation-dependent fields */
+const projectsData: Omit<Project, "description" | "type">[] = [
   {
     name: "opera-montpellier.ts",
     url: "https://inscriptions.opera-orchestre-montpellier.fr",
-    type: "CRM",
-    tech: "Next.js, Node.js, SQLite",
-    status: "DELIVERED",
-    description:
-      "Plateforme CRM complète avec gestion des utilisateurs et des réservations",
+    tech: "Next.js, Prisma, Postgres",
+    status: "RUNNING",
     github: "https://inscriptions.opera-orchestre-montpellier.fr",
   },
   {
     name: "404factory.tsx",
     url: "https://404factory.vincent-bichat.fr",
-    type: "Website",
     tech: "Vite, React, Framer Motion",
     status: "DEPLOYED",
-    description: "Site vitrine de mon agence.",
     github: "https://github.com/vincbct34/404Factory",
   },
   {
     name: "portfoliOS.json",
     url: "https://portfolio.vincent-bichat.fr",
-    type: "Website",
-    tech: "Next.js, Node.js, SQLite",
+    tech: "Vite, React, Framer Motion",
     status: "DEPLOYED",
-    description: "Site vitrine de mon agence.",
     github: "https://github.com/vincbct34/PortfoliOS",
   },
   {
-    name: "mypandoc.hs",
-    image: "/mypandoc.png",
-    type: "Tool",
+    name: "GLaDOS.hs",
+    image: "/glados.png",
     tech: "Haskell",
     status: "DELIVERED",
-    description:
-      "Convertisseur de documents inspiré de Pandoc, supporte le markdown, le json et l'xml.",
-    github:
-      "https://github.com/vincbct34/Tek2-EPITECH/tree/main/Functionnal%20Programming/mypandoc",
-  },
-  {
-    name: "zappy.cpp",
-    image: "/zappy.png",
-    type: "Game",
-    tech: "C++, C, Python",
-    status: "DELIVERED",
-    description: "Simulation multijoueur en réseau sur la planète Trantor.",
-    github: "https://github.com/vincbct34/Tek2-EPITECH/tree/main/zappy",
+    github: "https://github.com/vincbct34/Glados",
   },
 ];
 
+/** Color classes for project status badges */
 const statusColors: Record<string, string> = {
   DEPLOYED: "bg-green-500/20 text-green-400 border-green-500/30",
   DELIVERED: "bg-purple-500/20 text-purple-400 border-purple-500/30",
@@ -69,8 +57,15 @@ const statusColors: Record<string, string> = {
   DEVELOPMENT: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
 };
 
-// Sub-component for project image with OG fetching
-function ProjectImage({ project }: { project: Project }) {
+/**
+ * Displays the project image fetched via OpenGraph or fallback
+ * Shows loading spinner while fetching
+ */
+function ProjectImage({
+  project,
+}: {
+  project: Omit<Project, "description" | "type">;
+}) {
   const { imageUrl, isLoading } = useOpenGraphImage(project.url, project.image);
 
   if (isLoading) {
@@ -101,13 +96,33 @@ function ProjectImage({ project }: { project: Project }) {
   );
 }
 
+/**
+ * Projects section with terminal-style file browser and project details
+ * Features animated project selection and OpenGraph image fetching
+ */
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
+  const { t } = useLanguage();
+
+  /** Translation keys for project descriptions */
+  const descriptionKeys = ["opera", "factory", "portfolio", "glados"] as const;
+
+  /** Gets the translated description for a project */
+  const getDescription = (index: number) => {
+    const key = descriptionKeys[index];
+    return t.projects.descriptions[key];
+  };
+
+  /** Gets the project type label */
+  const getType = (index: number) => {
+    if (index === 0) return t.projects.types.opera;
+    return projectsData[index].tech.includes("Vite") ? "Website" : "Tool";
+  };
 
   return (
     <section id="projects" className="py-24 relative">
       <div className="container">
-        {/* Header */}
+        {/* Section header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -116,16 +131,15 @@ export function Projects() {
           className="mb-16"
         >
           <h2 className="section-title">
-            PROJETS<span className="text-electric">.</span>
+            {t.projects.title}
+            <span className="text-electric">.</span>
           </h2>
-          <p className="section-subtitle font-mono">
-            {"// Portfolio de réalisations"}
-          </p>
+          <p className="section-subtitle font-mono">{t.projects.subtitle}</p>
         </motion.div>
 
-        {/* Content Grid */}
+        {/* Two-column layout: Terminal + Project Details */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Terminal */}
+          {/* Terminal-style project browser */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -133,11 +147,9 @@ export function Projects() {
             variants={fadeInLeft}
           >
             <Terminal title="terminal">
-              <div className="text-electric mb-4">
-                user@404factory:~/projects$ ls -la
-              </div>
+              <div className="text-electric mb-4">{t.projects.terminal}</div>
               <div className="space-y-1">
-                {projects.map((project, index) => (
+                {projectsData.map((project, index) => (
                   <motion.div
                     key={index}
                     onClick={() => setSelectedProject(index)}
@@ -176,12 +188,12 @@ export function Projects() {
                 ))}
               </div>
               <div className="mt-4 text-electric">
-                user@404factory:~/projects$ cat {projects[selectedProject].name}
+                {t.projects.catCommand} {projectsData[selectedProject].name}
               </div>
             </Terminal>
           </motion.div>
 
-          {/* Project Details */}
+          {/* Project details panel */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -199,36 +211,36 @@ export function Projects() {
               >
                 <GlassCard className="p-6" hover={false}>
                   <h3 className="text-2xl font-bold text-electric mb-2">
-                    {projects[selectedProject].name}
+                    {projectsData[selectedProject].name}
                   </h3>
                   <p className="text-gray-400 text-sm mb-4">
-                    Type: {projects[selectedProject].type} | Tech:{" "}
-                    {projects[selectedProject].tech}
+                    Type: {getType(selectedProject)} | Tech:{" "}
+                    {projectsData[selectedProject].tech}
                   </p>
 
-                  {/* Project Image */}
+                  {/* Project preview image */}
                   <div className="aspect-video bg-black/50 rounded-lg overflow-hidden mb-4 border border-white/10">
-                    <ProjectImage project={projects[selectedProject]} />
+                    <ProjectImage project={projectsData[selectedProject]} />
                   </div>
 
                   <p className="text-gray-300 mb-4">
-                    {projects[selectedProject].description}
+                    {getDescription(selectedProject)}
                   </p>
 
                   <a
-                    href={projects[selectedProject].github}
+                    href={projectsData[selectedProject].github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-electric hover:text-white transition-colors group"
                   >
-                    Voir le projet
+                    {t.projects.viewProject}
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </GlassCard>
               </motion.div>
             </AnimatePresence>
 
-            {/* View All Button */}
+            {/* View all projects button */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -240,7 +252,7 @@ export function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="btn-outline">VOIR TOUS LES PROJETS</button>
+                <button className="btn-outline">{t.projects.viewAll}</button>
               </a>
             </motion.div>
           </motion.div>

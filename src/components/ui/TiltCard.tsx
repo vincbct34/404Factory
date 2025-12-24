@@ -1,12 +1,26 @@
+/**
+ * @fileoverview 3D tilt card component with glow and border effects
+ * @module components/ui/TiltCard
+ */
+
 import { useRef, useState, type ReactNode, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 
+/** Props for the TiltCard component */
 interface TiltCardProps {
+  /** Content to render inside the card */
   children: ReactNode;
+  /** Additional CSS classes */
   className?: string;
+  /** Color of the glow effect on hover */
   glowColor?: string;
 }
 
+/**
+ * Interactive card component with 3D tilt effect on mouse movement
+ * Features include animated glow following cursor, rotating border gradient,
+ * and 3D lift effect for content
+ */
 export function TiltCard({
   children,
   className = "",
@@ -18,6 +32,7 @@ export function TiltCard({
   const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
 
+  /** Calculates rotation and glow position based on mouse position */
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
 
@@ -25,7 +40,6 @@ export function TiltCard({
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    // Calculate rotation based on mouse position relative to center
     const mouseX = e.clientX - centerX;
     const mouseY = e.clientY - centerY;
 
@@ -37,7 +51,7 @@ export function TiltCard({
     setRotateX(rotateXValue);
     setRotateY(rotateYValue);
 
-    // Calculate glow position (percentage)
+    // Calculate glow position as percentage
     const glowX = ((e.clientX - rect.left) / rect.width) * 100;
     const glowY = ((e.clientY - rect.top) / rect.height) * 100;
     setGlowPosition({ x: glowX, y: glowY });
@@ -47,6 +61,7 @@ export function TiltCard({
     setIsHovered(true);
   };
 
+  /** Resets all effects when mouse leaves */
   const handleMouseLeave = () => {
     setIsHovered(false);
     setRotateX(0);
@@ -76,7 +91,7 @@ export function TiltCard({
         perspective: "1000px",
       }}
     >
-      {/* Animated glow overlay */}
+      {/* Animated glow overlay that follows cursor */}
       <div
         className="tilt-card-glow"
         style={{
@@ -85,7 +100,7 @@ export function TiltCard({
         }}
       />
 
-      {/* Animated border gradient */}
+      {/* Animated rotating border gradient */}
       <div
         className="tilt-card-border"
         style={{

@@ -1,6 +1,11 @@
+/**
+ * @fileoverview Framer Motion animation variants and configuration
+ * @module lib/animations
+ */
+
 import type { Variants } from "framer-motion";
 
-// Fade in from bottom
+/** Fade in animation from bottom to top */
 export const fadeInUp: Variants = {
   hidden: {
     opacity: 0,
@@ -16,7 +21,7 @@ export const fadeInUp: Variants = {
   },
 };
 
-// Fade in from left
+/** Fade in animation from left to right */
 export const fadeInLeft: Variants = {
   hidden: {
     opacity: 0,
@@ -32,7 +37,7 @@ export const fadeInLeft: Variants = {
   },
 };
 
-// Fade in from right
+/** Fade in animation from right to left */
 export const fadeInRight: Variants = {
   hidden: {
     opacity: 0,
@@ -48,7 +53,7 @@ export const fadeInRight: Variants = {
   },
 };
 
-// Scale up
+/** Scale up animation with fade */
 export const scaleUp: Variants = {
   hidden: {
     opacity: 0,
@@ -64,7 +69,7 @@ export const scaleUp: Variants = {
   },
 };
 
-// Stagger container for children
+/** Container variant for staggered children animations */
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
@@ -75,7 +80,7 @@ export const staggerContainer: Variants = {
   },
 };
 
-// Glitch effect
+/** Glitch text effect animation with color shifting */
 export const glitchVariants: Variants = {
   idle: {
     x: 0,
@@ -97,7 +102,7 @@ export const glitchVariants: Variants = {
   },
 };
 
-// Card hover effect
+/** Card hover effect with scale, lift, and glow */
 export const cardHover: Variants = {
   rest: {
     scale: 1,
@@ -115,13 +120,13 @@ export const cardHover: Variants = {
   },
 };
 
-// Viewport animation config
+/** Default viewport configuration for scroll-triggered animations */
 export const viewportConfig = {
   once: true,
   amount: 0.3,
 };
 
-// Spring transition
+/** Spring physics configuration for smooth transitions */
 export const springTransition = {
   type: "spring",
   stiffness: 100,

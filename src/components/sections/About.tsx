@@ -1,7 +1,14 @@
+/**
+ * @fileoverview About section component with company information and tech stack
+ * @module components/sections/About
+ */
+
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer, viewportConfig } from "@/lib/animations";
 import { GlassCard } from "@/components/ui";
+import { useLanguage } from "@/hooks/useLanguage";
 
+/** List of technologies displayed in the tech stack grid */
 const techStack = [
   "React",
   "Next.js",
@@ -9,16 +16,23 @@ const techStack = [
   "Python",
   "TypeScript",
   "Tailwind",
+  "n8n",
   "C++",
   "C",
   "Haskell",
 ];
 
+/**
+ * About section displaying company mission, approach, tech stack, and contact info
+ * Presented in a terminal/README style format
+ */
 export function About() {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="py-24 relative">
       <div className="container max-w-4xl">
-        {/* Header */}
+        {/* Section header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -27,12 +41,13 @@ export function About() {
           className="mb-12"
         >
           <h2 className="section-title">
-            À_PROPOS<span className="text-electric">.</span>
+            {t.about.title}
+            <span className="text-electric">.</span>
           </h2>
-          <p className="section-subtitle font-mono">{"// README.md"}</p>
+          <p className="section-subtitle font-mono">{t.about.subtitle}</p>
         </motion.div>
 
-        {/* Content Card */}
+        {/* Content card styled like a README */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -40,45 +55,38 @@ export function About() {
           variants={fadeInUp}
         >
           <GlassCard className="p-8 font-mono text-sm" hover={false}>
-            <div className="text-electric text-lg mb-6"># 404Factory</div>
+            <div className="text-electric text-lg mb-6">{t.about.heading}</div>
 
             <div className="space-y-8">
-              {/* Mission */}
+              {/* Mission section */}
               <div>
-                <div className="text-white font-bold mb-2">## Ma Mission</div>
+                <div className="text-white font-bold mb-2">
+                  {t.about.missionTitle}
+                </div>
                 <p className="text-gray-300 leading-relaxed">
-                  Transformer les défis techniques en opportunités créatives. Je
-                  crois que chaque erreur 404 cache une solution innovante.
+                  {t.about.missionText}
                 </p>
               </div>
 
-              {/* Approach */}
+              {/* Approach section */}
               <div>
-                <div className="text-white font-bold mb-2">## Mon Approche</div>
+                <div className="text-white font-bold mb-2">
+                  {t.about.approachTitle}
+                </div>
                 <ul className="text-gray-300 space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-electric rounded-full" />
-                    Code propre et maintenable
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-electric rounded-full" />
-                    Design centré utilisateur
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-electric rounded-full" />
-                    Technologies modernes
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-electric rounded-full" />
-                    Collaboration transparente
-                  </li>
+                  {t.about.approach.map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-electric rounded-full" />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* Tech Stack */}
+              {/* Tech stack grid */}
               <div>
                 <div className="text-white font-bold mb-4">
-                  ## Stack Technique
+                  {t.about.stackTitle}
                 </div>
                 <motion.div
                   variants={staggerContainer}
@@ -103,9 +111,11 @@ export function About() {
                 </motion.div>
               </div>
 
-              {/* Contact */}
+              {/* Contact information */}
               <div>
-                <div className="text-white font-bold mb-2">## Contact</div>
+                <div className="text-white font-bold mb-2">
+                  {t.about.contactTitle}
+                </div>
                 <p className="text-gray-300">
                   <span className="text-electric">Email: </span>
                   <a

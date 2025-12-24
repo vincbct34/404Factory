@@ -169,6 +169,7 @@
   pointer-events: none;
 }
 
+/* Glow overlay for cursor tracking */
 .tilt-card-glow {
   position: absolute;
   inset: 0;
@@ -178,6 +179,7 @@
   z-index: 1;
 }
 
+/* Animated rotating border */
 .tilt-card-border {
   position: absolute;
   inset: 0;
@@ -215,6 +217,7 @@
   0% {
     --border-angle: 0deg;
   }
+
   100% {
     --border-angle: 360deg;
   }

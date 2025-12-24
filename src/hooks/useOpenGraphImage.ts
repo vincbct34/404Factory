@@ -1,15 +1,24 @@
+/**
+ * @fileoverview Hook for fetching OpenGraph images from URLs via CORS proxies
+ * @module hooks/useOpenGraphImage
+ */
+
 import { useState, useEffect } from "react";
 
+/** State returned by the useOpenGraphImage hook */
 interface OpenGraphImageState {
+  /** The resolved image URL (OG image or fallback) */
   imageUrl: string | null;
+  /** Whether the fetch is in progress */
   isLoading: boolean;
+  /** Error message if fetch failed */
   error: string | null;
 }
 
-// Cache to avoid refetching the same URLs
+/** Cache to avoid refetching the same URLs */
 const ogImageCache = new Map<string, string>();
 
-// List of CORS proxies to try (in order of preference)
+/** List of CORS proxies to try in order of preference */
 const CORS_PROXIES = [
   (url: string) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
   (url: string) =>
@@ -19,16 +28,17 @@ const CORS_PROXIES = [
 ];
 
 /**
- * Extract OG image from HTML content
+ * Extracts OpenGraph image URL from HTML content
+ * Tries multiple meta tag patterns including Twitter card fallback
+ * @param html - Raw HTML content to parse
+ * @returns The OG image URL or null if not found
  */
 function extractOgImage(html: string): string | null {
-  // Try multiple patterns for og:image
   const patterns = [
     /<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]*content=["']([^"']+)["'][^>]*property=["']og:image["']/i,
     /<meta[^>]*name=["']og:image["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]*content=["']([^"']+)["'][^>]*name=["']og:image["']/i,
-    // Twitter card fallback
     /<meta[^>]*name=["']twitter:image["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]*content=["']([^"']+)["'][^>]*name=["']twitter:image["']/i,
   ];
@@ -44,7 +54,12 @@ function extractOgImage(html: string): string | null {
 }
 
 /**
- * Try fetching through multiple CORS proxies
+ * Attempts to fetch content through multiple CORS proxies
+ * Falls back to next proxy if current one fails
+ * @param url - Target URL to fetch
+ * @param signal - AbortSignal for cancellation
+ * @returns HTML content as string
+ * @throws Error if all proxies fail
  */
 async function fetchWithProxies(
   url: string,
@@ -73,8 +88,10 @@ async function fetchWithProxies(
 
 /**
  * Hook to fetch OpenGraph image from a URL using CORS proxies
+ * Includes caching, fallback support, and automatic cleanup
  * @param url - The website URL to fetch OG image from
  * @param fallbackImage - Optional fallback image if OG fetch fails
+ * @returns State with imageUrl, isLoading, and error
  */
 export function useOpenGraphImage(
   url?: string,
@@ -109,7 +126,7 @@ export function useOpenGraphImage(
 
     const controller = new AbortController();
 
-    // Set a timeout of 10 seconds
+    // 10 second timeout for the request
     const timeoutId = setTimeout(() => {
       controller.abort();
     }, 10000);
@@ -157,6 +174,7 @@ export function useOpenGraphImage(
 
     fetchOgImage();
 
+    // Cleanup on unmount or URL change
     return () => {
       clearTimeout(timeoutId);
       controller.abort();

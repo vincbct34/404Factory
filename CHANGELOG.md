@@ -6,6 +6,16 @@ Le format suit les conventions de [Keep a Changelog](https://keepachangelog.com/
 
 ---
 
+## [2.1.0] - 2025-12-24
+
+### Ajouté
+- Commentaires JSDoc cohérents sur l'ensemble du codebase TypeScript/TSX
+- Commentaires de sections et groupes de propriétés dans les fichiers CSS
+- En-têtes de fichiers avec description, auteur et année
+- Documentation pour toutes les interfaces, types, fonctions et composants
+
+---
+
 ## [2.0.0] - 2025-12-24
 
 ### Ajouté

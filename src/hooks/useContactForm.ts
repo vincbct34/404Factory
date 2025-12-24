@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Contact form state management and EmailJS integration
+ * @module hooks/useContactForm
+ */
+
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
@@ -6,7 +11,7 @@ import {
   type ContactFormState,
 } from "@/lib/types";
 
-// EmailJS configuration from environment variables
+/** EmailJS service configuration from environment variables */
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_NOTIFICATION = import.meta.env
   .VITE_EMAILJS_TEMPLATE_NOTIFICATION;
@@ -14,6 +19,11 @@ const EMAILJS_TEMPLATE_CONFIRMATION = import.meta.env
   .VITE_EMAILJS_TEMPLATE_CONFIRMATION;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+/**
+ * Hook for managing contact form state and submission
+ * Handles validation, email sending via EmailJS, and success/error states
+ * @returns Form data, state, and control functions
+ */
 export const useContactForm = () => {
   const [state, setState] = useState<ContactFormState>({
     isLoading: false,
@@ -28,6 +38,10 @@ export const useContactForm = () => {
     message: "",
   });
 
+  /**
+   * Validates form data against the contact form schema
+   * @returns Error message if validation fails, null otherwise
+   */
   const validateForm = (): string | null => {
     const result = contactFormSchema.safeParse(formData);
     if (!result.success) {
@@ -36,8 +50,11 @@ export const useContactForm = () => {
     return null;
   };
 
+  /**
+   * Submits the contact form via EmailJS
+   * Sends both notification (to owner) and confirmation (to user) emails
+   */
   const submitForm = async (): Promise<void> => {
-    // Client-side validation
     const validationError = validateForm();
     if (validationError) {
       setState({ isLoading: false, isSuccess: false, error: validationError });
@@ -55,16 +72,14 @@ export const useContactForm = () => {
     };
 
     try {
-      // Send both emails in parallel
+      // Send notification and confirmation emails in parallel
       await Promise.all([
-        // 1. Notification email to owner (you)
         emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_NOTIFICATION,
           templateParams,
           EMAILJS_PUBLIC_KEY,
         ),
-        // 2. Confirmation email to user
         emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_CONFIRMATION,
@@ -92,13 +107,19 @@ export const useContactForm = () => {
     }
   };
 
+  /** Resets the form state to initial values */
   const resetState = () => {
     setState({ isLoading: false, isSuccess: false, error: null });
   };
 
+  /**
+   * Updates a single field in the form data
+   * Also clears any existing error when user starts typing
+   * @param field - The field name to update
+   * @param value - The new value
+   */
   const updateFormData = (field: keyof ContactFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear errors when user starts typing
     if (state.error) {
       setState((prev) => ({ ...prev, error: null }));
     }

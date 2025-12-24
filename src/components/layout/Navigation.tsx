@@ -1,18 +1,32 @@
+/**
+ * @fileoverview Main navigation component with responsive mobile menu
+ * @module components/layout/Navigation
+ */
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/hooks/useLanguage";
+import { LanguageSwitcher } from "@/components/ui";
 
-const navLinks = [
-  { label: "./services", target: "services" },
-  { label: "./projets", target: "projects" },
-  { label: "./about", target: "about" },
-  { label: "./tarifs", target: "pricing" },
-  { label: "./contact", target: "contact" },
-];
-
+/**
+ * Sticky navigation bar with smooth scroll links and mobile hamburger menu
+ * Adds glass effect when scrolled past initial viewport
+ */
 export function Navigation() {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  /** Navigation links configuration */
+  const navLinks = [
+    { label: t.nav.services, target: "services" },
+    { label: t.nav.projects, target: "projects" },
+    { label: t.nav.about, target: "about" },
+    { label: t.nav.pricing, target: "pricing" },
+    { label: t.nav.contact, target: "contact" },
+  ];
+
+  // Listen for scroll to toggle glass effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -21,6 +35,7 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /** Smooth scrolls to a section and closes mobile menu */
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -55,7 +70,7 @@ export function Navigation() {
             </span>
           </button>
 
-          {/* Desktop Menu */}
+          {/* Desktop navigation links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <motion.button
@@ -70,36 +85,41 @@ export function Navigation() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric transition-all group-hover:w-full" />
               </motion.button>
             ))}
+            <LanguageSwitcher />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Toggle menu"
-          >
-            <motion.span
-              animate={{
-                rotate: isMobileMenuOpen ? 45 : 0,
-                y: isMobileMenuOpen ? 8 : 0,
-              }}
-              className="w-6 h-0.5 bg-white block"
-            />
-            <motion.span
-              animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
-              className="w-6 h-0.5 bg-white block"
-            />
-            <motion.span
-              animate={{
-                rotate: isMobileMenuOpen ? -45 : 0,
-                y: isMobileMenuOpen ? -8 : 0,
-              }}
-              className="w-6 h-0.5 bg-white block"
-            />
-          </button>
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="flex flex-col gap-1.5 p-2"
+              aria-label="Toggle menu"
+            >
+              {/* Animated hamburger icon */}
+              <motion.span
+                animate={{
+                  rotate: isMobileMenuOpen ? 45 : 0,
+                  y: isMobileMenuOpen ? 8 : 0,
+                }}
+                className="w-6 h-0.5 bg-white block"
+              />
+              <motion.span
+                animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
+                className="w-6 h-0.5 bg-white block"
+              />
+              <motion.span
+                animate={{
+                  rotate: isMobileMenuOpen ? -45 : 0,
+                  y: isMobileMenuOpen ? -8 : 0,
+                }}
+                className="w-6 h-0.5 bg-white block"
+              />
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu dropdown */}
         <motion.div
           initial={false}
           animate={{
