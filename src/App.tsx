@@ -14,7 +14,6 @@ import {
   Contact,
 } from "@/components/sections";
 import { NotFound } from "@/pages";
-import Snowfall from "react-snowfall";
 import { LanguageProvider, useLanguage } from "@/hooks/useLanguage";
 
 /**
@@ -26,10 +25,8 @@ function HomePage() {
 
   return (
     <div className="noise-overlay">
-      {/* Animated gradient background with snowfall effect */}
-      <div className="gradient-bg">
-        <Snowfall radius={[5, 5]} />
-      </div>
+      {/* Gradient background */}
+      <div className="gradient-bg" />
 
       <Navigation />
 
