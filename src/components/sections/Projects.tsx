@@ -38,7 +38,7 @@ const projectsData: Omit<Project, "description" | "type">[] = [
     url: "https://portfolio.vincent-bichat.fr",
     tech: "Vite, React, Framer Motion",
     status: "DEPLOYED",
-    github: "https://github.com/vincbct34/PortfoliOS",
+    github: "https://portfolio.vincent-bichat.fr",
   },
   {
     name: "GLaDOS.hs",
