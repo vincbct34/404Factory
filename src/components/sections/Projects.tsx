@@ -47,6 +47,13 @@ const projectsData: Omit<Project, "description" | "type">[] = [
     status: "DELIVERED",
     github: "https://github.com/vincbct34/Glados",
   },
+  {
+    name: "QReview.ts",
+    url: "https://qreview.vincent-bichat.fr",
+    tech: "HTML, CSS, JavaScript",
+    status: "DEPLOYED",
+    github: "https://github.com/vincbct34/QReview",
+  },
 ];
 
 /** Color classes for project status badges */
