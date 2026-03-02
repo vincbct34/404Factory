@@ -15,6 +15,7 @@ import {
 } from "@/components/sections";
 import { NotFound } from "@/pages";
 import { LanguageProvider, useLanguage } from "@/hooks/useLanguage";
+import { SEOHead } from "@/components/SEOHead";
 
 /**
  * Home page component containing all main sections
@@ -25,6 +26,9 @@ function HomePage() {
 
   return (
     <div className="noise-overlay">
+      {/* Dynamic SEO head management */}
+      <SEOHead />
+
       {/* Gradient background */}
       <div className="gradient-bg" />
 
@@ -58,14 +62,15 @@ function HomePage() {
  */
 function App() {
   return (
-    <LanguageProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <LanguageProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/en" element={<HomePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </LanguageProvider>
+      </LanguageProvider>
+    </BrowserRouter>
   );
 }
 

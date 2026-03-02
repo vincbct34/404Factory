@@ -76,8 +76,8 @@ export function Hero() {
         </motion.div>
 
         {/* Main headline with glitch effect */}
-        <motion.div variants={fadeInUp} className="mb-8">
-          <div className="text-4xl md:text-7xl font-black leading-tight">
+        <motion.h1 variants={fadeInUp} className="mb-8">
+          <span className="block text-4xl md:text-7xl font-black leading-tight">
             <motion.span
               variants={glitchVariants}
               animate={controls}
@@ -86,11 +86,11 @@ export function Hero() {
             >
               {t.hero.fromError}
             </motion.span>
-          </div>
-          <div className="text-5xl md:text-8xl font-black my-2">
+          </span>
+          <span className="block text-5xl md:text-8xl font-black my-2">
             <span className="text-electric glow-text">{t.hero.code}</span>
-          </div>
-          <div className="text-4xl md:text-7xl font-black leading-tight">
+          </span>
+          <span className="block text-4xl md:text-7xl font-black leading-tight">
             <motion.span
               variants={glitchVariants}
               animate={controls}
@@ -99,8 +99,8 @@ export function Hero() {
             >
               {t.hero.toSuccess}
             </motion.span>
-          </div>
-        </motion.div>
+          </span>
+        </motion.h1>
 
         {/* Subtitle */}
         <motion.p
@@ -115,10 +115,17 @@ export function Hero() {
 
         {/* Call-to-action button */}
         <motion.div variants={fadeInUp}>
-          <button onClick={scrollToContact} className="btn-primary text-lg">
-            <span className="font-mono">{">"}</span>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToContact();
+            }}
+            className="btn-primary text-lg"
+          >
+            <span className="font-mono">{"> "}</span>
             {t.hero.cta}
-          </button>
+          </a>
         </motion.div>
       </motion.div>
     </section>

@@ -11,6 +11,7 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
+import { useLocation } from "react-router-dom";
 import { fr, en, type Translations } from "@/i18n";
 
 /** Supported language codes */
@@ -37,14 +38,18 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 const STORAGE_KEY = "404factory-language";
 
 /**
- * Determines the initial language based on stored preference or browser settings
+ * Determines the initial language based on URL path, stored preference, or browser settings
+ * URL takes precedence over localStorage and browser detection
  * @returns The initial language to use
  */
 function getInitialLanguage(): Language {
   if (typeof window === "undefined") return "fr";
+  // URL path takes precedence
+  if (window.location.pathname.startsWith("/en")) return "en";
+  if (window.location.pathname === "/") return "fr";
+  // For other paths (e.g. 404 pages), check localStorage then browser
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored === "fr" || stored === "en") return stored;
-  // Fall back to browser language detection
   const browserLang = navigator.language.split("-")[0];
   return browserLang === "en" ? "en" : "fr";
 }
@@ -55,7 +60,21 @@ function getInitialLanguage(): Language {
  * @param children - Child components to wrap
  */
 export function LanguageProvider({ children }: { children: ReactNode }) {
+  const location = useLocation();
   const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  // Sync language with URL during render (React-recommended pattern for
+  // adjusting state based on changed props/context — avoids unnecessary effects)
+  const pathLang: Language | null =
+    location.pathname === "/"
+      ? "fr"
+      : location.pathname.startsWith("/en")
+        ? "en"
+        : null;
+
+  if (pathLang && pathLang !== language) {
+    setLanguageState(pathLang);
+  }
 
   // Persist language to localStorage and update document lang attribute
   useEffect(() => {

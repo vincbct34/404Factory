@@ -95,6 +95,7 @@ function ProjectImage({
     <img
       src={imageUrl}
       alt={project.name}
+      loading="lazy"
       className="w-full h-full object-contain"
       onError={(e) => {
         (e.target as HTMLImageElement).style.display = "none";
@@ -258,8 +259,9 @@ export function Projects() {
                 href="https://github.com/vincbct34"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="btn-outline"
               >
-                <button className="btn-outline">{t.projects.viewAll}</button>
+                {t.projects.viewAll}
               </a>
             </motion.div>
           </motion.div>

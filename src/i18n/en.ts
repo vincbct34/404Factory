@@ -1,6 +1,16 @@
 import type { Translations } from "./fr";
 
 export const en: Translations = {
+  // SEO Meta
+  seo: {
+    title: "404Factory | Digital Agency Montpellier",
+    description:
+      "Digital agency in Montpellier: custom website creation, automations and technical consulting. Transform your ideas into reality.",
+    ogTitle: "404Factory | From Error to Success",
+    ogDescription:
+      "Digital agency in Montpellier specialized in custom website creation, automations and technical consulting.",
+  },
+
   // Navigation
   nav: {
     services: "./services",

@@ -7,10 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Meta -->
-  <title>404Factory | De l'erreur à la réussite</title>
+  <title>404Factory | Agence Digitale Montpellier</title>
   <meta name="description"
-    content="Agence digitale spécialisée dans la création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité." />
-  <meta name="keywords" content="développement web, Next.js, React, automatisation, consulting tech, Montpellier" />
+    content="Agence digitale à Montpellier : création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité." />
   <meta name="author" content="404Factory" />
 
   <!-- PWA Manifest -->
@@ -29,11 +28,12 @@
   <meta property="og:url" content="https://404factory.vincent-bichat.fr/" />
   <meta property="og:title" content="404Factory | De l'erreur à la réussite" />
   <meta property="og:description"
-    content="Agence digitale spécialisée dans la création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité." />
+    content="Agence digitale à Montpellier : création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité." />
   <meta property="og:image" content="https://404factory.vincent-bichat.fr/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="404Factory" />
 
   <!-- Twitter -->
@@ -41,11 +41,16 @@
   <meta name="twitter:url" content="https://404factory.vincent-bichat.fr/" />
   <meta name="twitter:title" content="404Factory | De l'erreur à la réussite" />
   <meta name="twitter:description"
-    content="Agence digitale spécialisée dans la création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité." />
+    content="Agence digitale à Montpellier : création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité." />
   <meta name="twitter:image" content="https://404factory.vincent-bichat.fr/og-image.png" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://404factory.vincent-bichat.fr/" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/" />
+  <link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en" />
+  <link rel="alternate" hreflang="x-default" href="https://404factory.vincent-bichat.fr/" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +58,72 @@
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "404Factory",
+        "url": "https://404factory.vincent-bichat.fr",
+        "inLanguage": ["fr-FR", "en-US"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "name": "404Factory",
+        "url": "https://404factory.vincent-bichat.fr",
+        "logo": "https://404factory.vincent-bichat.fr/logo.png",
+        "image": "https://404factory.vincent-bichat.fr/og-image.png",
+        "email": "factory404@outlook.fr",
+        "telephone": "+33623431009",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Montpellier",
+          "addressCountry": "FR"
+        },
+        "description": "Agence digitale à Montpellier spécialisée dans la création de sites web sur-mesure, automatisations et consulting technique.",
+        "sameAs": ["https://github.com/vincbct34"],
+        "knowsLanguage": ["fr", "en"],
+        "areaServed": {
+          "@type": "Country",
+          "name": "France"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sites web sur mesure",
+                "description": "Développement web moderne avec React, Next.js, Node.js"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Automatisations",
+                "description": "Scripts personnalisés, APIs, intégrations pour automatiser vos processus métier"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Consulting technique",
+                "description": "Audit technique, architecture, optimisation"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>

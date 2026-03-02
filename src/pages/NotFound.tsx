@@ -141,7 +141,7 @@ function FactoryChimney({ position }: { position: "left" | "right" }) {
  */
 export function NotFound() {
   const [floatingErrors, setFloatingErrors] = useState<FloatingError[]>([]);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Clean up old floating error animations
   useEffect(() => {
@@ -308,7 +308,10 @@ export function NotFound() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <Link to="/" className="w-full sm:w-auto">
+              <Link
+                to={language === "en" ? "/en" : "/"}
+                className="w-full sm:w-auto"
+              >
                 <button className="btn-primary w-full sm:w-auto justify-center text-sm sm:text-base">
                   <Home className="w-4 h-4 sm:w-5 sm:h-5" />
                   {t.notFound.backHome}

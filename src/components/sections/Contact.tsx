@@ -77,6 +77,8 @@ export function Contact() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
+                    role="alert"
+                    aria-live="assertive"
                     className="mb-4 p-3 bg-red-500/10 border border-red-500/50 rounded flex items-center gap-2 text-red-300 font-mono text-sm"
                   >
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -89,6 +91,8 @@ export function Contact() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
+                    role="status"
+                    aria-live="polite"
                     className="mb-4 p-3 bg-green-500/10 border border-green-500/50 rounded flex items-center gap-2 text-green-300 font-mono text-sm"
                   >
                     <CheckCircle className="w-4 h-4 flex-shrink-0" />
@@ -104,10 +108,14 @@ export function Contact() {
               >
                 {/* Name field */}
                 <div>
-                  <label className="text-gray-400 block mb-1">
+                  <label
+                    htmlFor="contact-name"
+                    className="text-gray-400 block mb-1"
+                  >
                     {t.contact.form.name}
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => updateFormData("name", e.target.value)}
@@ -119,10 +127,14 @@ export function Contact() {
 
                 {/* Email field */}
                 <div>
-                  <label className="text-gray-400 block mb-1">
+                  <label
+                    htmlFor="contact-email"
+                    className="text-gray-400 block mb-1"
+                  >
                     {t.contact.form.email}
                   </label>
                   <input
+                    id="contact-email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => updateFormData("email", e.target.value)}
@@ -134,10 +146,14 @@ export function Contact() {
 
                 {/* Project type select */}
                 <div>
-                  <label className="text-gray-400 block mb-1">
+                  <label
+                    htmlFor="contact-project"
+                    className="text-gray-400 block mb-1"
+                  >
                     {t.contact.form.projectType}
                   </label>
                   <select
+                    id="contact-project"
                     value={formData.project}
                     onChange={(e) => updateFormData("project", e.target.value)}
                     className="w-full bg-black border border-white/10 rounded px-3 py-2 text-white focus:border-electric focus:outline-none transition-colors"
@@ -158,10 +174,14 @@ export function Contact() {
 
                 {/* Message textarea */}
                 <div>
-                  <label className="text-gray-400 block mb-1">
+                  <label
+                    htmlFor="contact-message"
+                    className="text-gray-400 block mb-1"
+                  >
                     {t.contact.form.description}
                   </label>
                   <textarea
+                    id="contact-message"
                     value={formData.message}
                     onChange={(e) => updateFormData("message", e.target.value)}
                     rows={4}

@@ -1,4 +1,14 @@
 export const fr = {
+  // SEO Meta
+  seo: {
+    title: "404Factory | Agence Digitale Montpellier",
+    description:
+      "Agence digitale à Montpellier : création de sites web sur-mesure, automatisations et consulting technique. Transformez vos idées en réalité.",
+    ogTitle: "404Factory | De l'erreur à la réussite",
+    ogDescription:
+      "Agence digitale à Montpellier spécialisée dans la création de sites web sur-mesure, automatisations et consulting technique.",
+  },
+
   // Navigation
   nav: {
     services: "./services",

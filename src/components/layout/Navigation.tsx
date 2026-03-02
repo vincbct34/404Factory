@@ -56,26 +56,36 @@ export function Navigation() {
       <div className="container">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection("hero")}
+          <a
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("hero");
+            }}
             className="flex items-center gap-3 group"
           >
             <img
               src="/logo.png"
-              alt="404Factory Logo"
+              alt="404Factory — Agence digitale Montpellier"
+              width="32"
+              height="32"
               className="w-8 h-8 filter transition-transform group-hover:scale-110"
             />
             <span className="text-2xl font-bold">
               404<span className="text-electric">Factory</span>
             </span>
-          </button>
+          </a>
 
           {/* Desktop navigation links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
-              <motion.button
+              <motion.a
                 key={link.target}
-                onClick={() => scrollToSection(link.target)}
+                href={`#${link.target}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.target);
+                }}
                 className="font-mono text-sm text-gray-300 hover:text-electric transition-colors relative group"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -83,7 +93,7 @@ export function Navigation() {
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric transition-all group-hover:w-full" />
-              </motion.button>
+              </motion.a>
             ))}
             <LanguageSwitcher />
           </div>
@@ -131,13 +141,17 @@ export function Navigation() {
         >
           <div className="py-4 flex flex-col gap-4 border-t border-white/10">
             {navLinks.map((link) => (
-              <button
+              <a
                 key={link.target}
-                onClick={() => scrollToSection(link.target)}
-                className="font-mono text-sm text-gray-300 hover:text-electric transition-colors text-left"
+                href={`#${link.target}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.target);
+                }}
+                className="font-mono text-sm text-gray-300 hover:text-electric transition-colors text-left block"
               >
                 {link.label}
-              </button>
+              </a>
             ))}
           </div>
         </motion.div>
