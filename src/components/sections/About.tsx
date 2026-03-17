@@ -1,5 +1,5 @@
 /**
- * @fileoverview About section component with company information and tech stack
+ * @fileoverview About section component with personal bio and tech stack
  * @module components/sections/About
  */
 
@@ -23,8 +23,8 @@ const techStack = [
 ];
 
 /**
- * About section displaying company mission, approach, tech stack, and contact info
- * Presented in a terminal/README style format
+ * About section displaying personal bio, approach, tech stack, and contact info
+ * Presented in a terminal/README style format with a photo placeholder
  */
 export function About() {
   const { t } = useLanguage();
@@ -55,7 +55,21 @@ export function About() {
           variants={fadeInUp}
         >
           <GlassCard className="p-8 font-mono text-sm" hover={false}>
-            <div className="text-electric text-lg mb-6">{t.about.heading}</div>
+            {/* Header with photo placeholder and heading */}
+            <div className="flex flex-col sm:flex-row items-start gap-6 mb-8">
+              {/* Photo */}
+              <img
+                src="/me.png"
+                alt={t.about.photoAlt}
+                className="w-24 h-24 rounded-xl object-cover flex-shrink-0"
+              />
+              <div>
+                <div className="text-electric text-lg mb-2">
+                  {t.about.heading}
+                </div>
+                <p className="text-gray-300 leading-relaxed">{t.about.bio}</p>
+              </div>
+            </div>
 
             <div className="space-y-8">
               {/* Mission section */}
@@ -75,8 +89,8 @@ export function About() {
                 </div>
                 <ul className="text-gray-300 space-y-2">
                   {t.about.approach.map((item, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-electric rounded-full" />
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 bg-electric rounded-full mt-2 flex-shrink-0" />
                       {item}
                     </li>
                   ))}

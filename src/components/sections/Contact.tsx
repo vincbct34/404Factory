@@ -122,6 +122,7 @@ export function Contact() {
                     className="w-full bg-black/50 border border-white/10 rounded px-3 py-2 text-white focus:border-electric focus:outline-none transition-colors"
                     placeholder={t.contact.form.namePlaceholder}
                     disabled={state.isLoading}
+                    aria-required="true"
                   />
                 </div>
 
@@ -141,6 +142,7 @@ export function Contact() {
                     className="w-full bg-black/50 border border-white/10 rounded px-3 py-2 text-white focus:border-electric focus:outline-none transition-colors"
                     placeholder={t.contact.form.emailPlaceholder}
                     disabled={state.isLoading}
+                    aria-required="true"
                   />
                 </div>
 
@@ -158,6 +160,7 @@ export function Contact() {
                     onChange={(e) => updateFormData("project", e.target.value)}
                     className="w-full bg-black border border-white/10 rounded px-3 py-2 text-white focus:border-electric focus:outline-none transition-colors"
                     disabled={state.isLoading}
+                    aria-required="true"
                   >
                     <option value="">{t.contact.form.projectSelect}</option>
                     <option value="website">
@@ -188,6 +191,7 @@ export function Contact() {
                     className="w-full bg-black/50 border border-white/10 rounded px-3 py-2 text-white focus:border-electric focus:outline-none transition-colors resize-none"
                     placeholder={t.contact.form.descriptionPlaceholder}
                     disabled={state.isLoading}
+                    aria-required="true"
                   />
                 </div>
 

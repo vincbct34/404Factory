@@ -22,7 +22,7 @@ export function Navigation() {
     { label: t.nav.services, target: "services" },
     { label: t.nav.projects, target: "projects" },
     { label: t.nav.about, target: "about" },
-    { label: t.nav.pricing, target: "pricing" },
+    { label: t.nav.process, target: "process" },
     { label: t.nav.contact, target: "contact" },
   ];
 
@@ -66,7 +66,7 @@ export function Navigation() {
           >
             <img
               src="/logo.png"
-              alt="404Factory — Agence digitale Montpellier"
+              alt={t.nav.logoAlt}
               width="32"
               height="32"
               className="w-8 h-8 filter transition-transform group-hover:scale-110"

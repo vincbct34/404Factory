@@ -18,14 +18,18 @@ export function Hero() {
 
   // Trigger glitch effect periodically
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       controls.start("glitch");
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         controls.start("idle");
       }, 200);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeoutId);
+    };
   }, [controls]);
 
   /** Smooth scrolls to the contact section */

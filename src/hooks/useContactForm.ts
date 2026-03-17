@@ -6,10 +6,11 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
-  contactFormSchema,
+  createContactFormSchema,
   type ContactFormData,
   type ContactFormState,
 } from "@/lib/types";
+import { useLanguage } from "@/hooks/useLanguage";
 
 /** EmailJS service configuration from environment variables */
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -25,6 +26,8 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
  * @returns Form data, state, and control functions
  */
 export const useContactForm = () => {
+  const { t } = useLanguage();
+
   const [state, setState] = useState<ContactFormState>({
     isLoading: false,
     isSuccess: false,
@@ -43,9 +46,10 @@ export const useContactForm = () => {
    * @returns Error message if validation fails, null otherwise
    */
   const validateForm = (): string | null => {
-    const result = contactFormSchema.safeParse(formData);
+    const schema = createContactFormSchema(t.validation);
+    const result = schema.safeParse(formData);
     if (!result.success) {
-      return result.error.issues[0]?.message || "Erreur de validation";
+      return result.error.issues[0]?.message || t.validation.validationError;
     }
     return null;
   };
@@ -101,7 +105,7 @@ export const useContactForm = () => {
       setState({
         isLoading: false,
         isSuccess: false,
-        error: "Erreur lors de l'envoi. Veuillez réessayer.",
+        error: t.validation.sendFailed,
       });
       console.error("EmailJS error:", error);
     }

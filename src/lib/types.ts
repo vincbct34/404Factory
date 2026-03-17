@@ -5,18 +5,30 @@
 
 import { z } from "zod";
 
-/** Zod schema for validating contact form submissions */
-export const contactFormSchema = z.object({
-  /** User's full name - minimum 2 characters */
-  name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
-  /** User's email address */
-  email: z.string().email("Adresse email invalide"),
-  /** Selected project type */
-  project: z.string().min(1, "Veuillez sélectionner un type de projet"),
-  /** Project description message - minimum 10 characters */
-  message: z
-    .string()
-    .min(10, "Le message doit contenir au moins 10 caractères"),
+/** Validation message strings for the contact form schema */
+export interface ValidationMessages {
+  nameMin: string;
+  emailInvalid: string;
+  projectRequired: string;
+  messageMin: string;
+}
+
+/** Creates a localized Zod schema for contact form validation */
+export function createContactFormSchema(messages: ValidationMessages) {
+  return z.object({
+    name: z.string().min(2, messages.nameMin),
+    email: z.string().email(messages.emailInvalid),
+    project: z.string().min(1, messages.projectRequired),
+    message: z.string().min(10, messages.messageMin),
+  });
+}
+
+/** Zod schema for validating contact form submissions (used for type inference) */
+export const contactFormSchema = createContactFormSchema({
+  nameMin: "Le nom doit contenir au moins 2 caractères",
+  emailInvalid: "Adresse email invalide",
+  projectRequired: "Veuillez sélectionner un type de projet",
+  messageMin: "Le message doit contenir au moins 10 caractères",
 });
 
 /** Inferred type from the contact form schema */

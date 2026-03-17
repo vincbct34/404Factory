@@ -112,19 +112,25 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
   const { t } = useLanguage();
 
-  /** Translation keys for project descriptions */
-  const descriptionKeys = ["opera", "factory", "portfolio", "glados"] as const;
+  /** Translation keys for project descriptions and types */
+  const projectKeys = [
+    "opera",
+    "factory",
+    "portfolio",
+    "glados",
+    "qreview",
+  ] as const;
 
   /** Gets the translated description for a project */
   const getDescription = (index: number) => {
-    const key = descriptionKeys[index];
+    const key = projectKeys[index];
     return t.projects.descriptions[key];
   };
 
-  /** Gets the project type label */
+  /** Gets the translated project type label */
   const getType = (index: number) => {
-    if (index === 0) return t.projects.types.opera;
-    return projectsData[index].tech.includes("Vite") ? "Website" : "Tool";
+    const key = projectKeys[index];
+    return t.projects.types[key];
   };
 
   return (
