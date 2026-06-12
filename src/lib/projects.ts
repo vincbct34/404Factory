@@ -51,9 +51,7 @@ export const projects: WorkProject[] = [
   {
     id: "glados",
     image: "/glados.png",
-    link: "https://github.com/vincbct34/Glados",
     tags: ["Haskell"],
-    featured: true,
   },
   {
     id: "qreview",
@@ -67,6 +65,7 @@ export const projects: WorkProject[] = [
     url: "https://www.vincent-bichat.fr",
     link: "https://www.vincent-bichat.fr",
     tags: ["Vite", "React", "Framer Motion"],
+    featured: true,
   },
   {
     id: "factory",
@@ -79,5 +78,6 @@ export const projects: WorkProject[] = [
     id: "epsa",
     image: "/epsa.webp",
     tags: ["Electron", "React", "TypeScript"],
+    featured: true,
   },
 ];

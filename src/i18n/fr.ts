@@ -141,8 +141,8 @@ export const fr = {
         ph: "FACTORY",
       },
       portfolio: {
-        title: "portfoliOS",
-        description: "Un portfolio personnel inspiré de Windows 11.",
+        title: "Portfolio",
+        description: "Un portfolio personnel multi-thémes.",
         type: "Portfolio",
         ph: "OS",
       },

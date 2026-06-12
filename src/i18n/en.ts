@@ -140,8 +140,8 @@ export const en: Translations = {
         ph: "FACTORY",
       },
       portfolio: {
-        title: "portfoliOS",
-        description: "A personal portfolio inspired by Windows 11.",
+        title: "Portfolio",
+        description: "A personal multi-themed portfolio.",
         type: "Portfolio",
         ph: "OS",
       },
