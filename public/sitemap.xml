@@ -2,113 +2,129 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://404factory.vincent-bichat.fr/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en" />
+    <loc>https://www.404-factory.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en" />
+    <loc>https://www.404-factory.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/work</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/work" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/work" />
+    <loc>https://www.404-factory.com/work</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en/work</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/work" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/work" />
+    <loc>https://www.404-factory.com/en/work</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/work/opera-montpellier</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/work/opera-montpellier" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/work/opera-montpellier" />
+    <loc>https://www.404-factory.com/work/opera-montpellier</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/opera-montpellier" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/opera-montpellier" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en/work/opera-montpellier</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/work/opera-montpellier" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/work/opera-montpellier" />
+    <loc>https://www.404-factory.com/en/work/opera-montpellier</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/opera-montpellier" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/opera-montpellier" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/services</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/services" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/services" />
+    <loc>https://www.404-factory.com/work/uar-ics-montpellier</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/uar-ics-montpellier" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/uar-ics-montpellier" />
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.404-factory.com/en/work/uar-ics-montpellier</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/uar-ics-montpellier" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/uar-ics-montpellier" />
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.404-factory.com/services</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/services" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en/services</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/services" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/services" />
+    <loc>https://www.404-factory.com/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/services" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/studio</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/studio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/studio" />
+    <loc>https://www.404-factory.com/studio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/studio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/studio" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en/studio</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/studio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/studio" />
+    <loc>https://www.404-factory.com/en/studio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/studio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/studio" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/contact</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/contact" />
+    <loc>https://www.404-factory.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/contact" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en/contact</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/contact" />
+    <loc>https://www.404-factory.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/contact" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/legal</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/legal" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/legal" />
+    <loc>https://www.404-factory.com/legal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/legal" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/legal" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://404factory.vincent-bichat.fr/en/legal</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://404factory.vincent-bichat.fr/legal" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://404factory.vincent-bichat.fr/en/legal" />
+    <loc>https://www.404-factory.com/en/legal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/legal" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/legal" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

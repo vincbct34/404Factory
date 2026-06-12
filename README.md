@@ -4,7 +4,7 @@
 
 Studio indépendant à Montpellier : sites web sur-mesure, automatisations et consulting technique.
 
-🌐 **[404factory.vincent-bichat.fr](https://404factory.vincent-bichat.fr)**
+🌐 **[www.404-factory.com](https://www.404-factory.com)**
 
 ---
 

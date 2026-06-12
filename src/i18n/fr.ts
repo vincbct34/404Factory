@@ -31,6 +31,11 @@ export const fr = {
       description:
         "Plateforme d'inscriptions sur-mesure pour l'Opéra Orchestre National Montpellier : Next.js, Prisma, PostgreSQL. Étude de cas par 404Factory.",
     },
+    caseStudyUarIcs: {
+      title: "Étude de cas : UAR ICS — Université de Montpellier — 404Factory",
+      description:
+        "Portail WordPress institutionnel fédérant 6 plateformes technologiques pour l'UAR ICS, Université de Montpellier. Étude de cas par 404Factory.",
+    },
     legal: {
       title: "Mentions légales — 404Factory",
       description: "Informations juridiques du site 404Factory.",
@@ -112,7 +117,15 @@ export const fr = {
   projects: {
     viewProject: "Voir le projet",
     viewCase: "Lire l'étude de cas",
+    private: "Projet privé",
     items: {
+      uarIcs: {
+        title: "UAR ICS — Université de Montpellier",
+        description:
+          "Portail web fédérant les ressources, services et actualités de 6 plateformes technologiques de l'unité.",
+        type: "Portail institutionnel",
+        ph: "ICS",
+      },
       opera: {
         title: "Opéra Orchestre Montpellier",
         description:
@@ -146,6 +159,13 @@ export const fr = {
         type: "Outil de review",
         ph: "QREVIEW",
       },
+      epsa: {
+        title: "Publipostage EPSA",
+        description:
+          "Logiciel desktop pour automatiser les campagnes de publipostage courrier et email.",
+        type: "Outil interne",
+        ph: "EPSA",
+      },
     },
   },
 
@@ -153,7 +173,7 @@ export const fr = {
   workPage: {
     idx: "01",
     title: "Projets",
-    count: "05 PROJETS",
+    count: "07 PROJETS",
     intro:
       "Plateformes, sites et outils — construits sur-mesure, sans template, et maintenus pour durer.",
   },
@@ -187,6 +207,26 @@ export const fr = {
       quote:
         "La plateforme d'inscription a simplifié notre gestion administrative. Un travail professionnel, livré dans les délais.",
       quoteAuthor: "Opéra Orchestre Montpellier",
+    },
+    uarIcs: {
+      folio: "ÉTUDE DE CAS — 002",
+      title: "UAR ICS — Université de Montpellier",
+      client: "UAR ICS, Université de Montpellier",
+      role: "Conception & développement WordPress",
+      stack: "WordPress · PHP · Custom Post Types",
+      status: "En production",
+      intro:
+        "Un portail web qui fédère les ressources, services et actualités de 6 plateformes technologiques sous une identité institutionnelle unique.",
+      contextTitle: "Le contexte",
+      contextText:
+        "L'unité regroupe 6 plateformes technologiques aux ressources dispersées, sans visibilité commune. Il manquait un point d'entrée unique, conforme à la charte graphique de l'Université de Montpellier et accessible (RGAA).",
+      solutionTitle: "Ce qu'on a construit",
+      solutionText:
+        "Un portail WordPress sur-mesure : Custom Post Types et taxonomies pour structurer les 6 plateformes, charte graphique institutionnelle intégrée, SEO académique (structure Hn, métadonnées, maillage interne), performance (compression, cache) et documentation pour les responsables de contenu.",
+      quoteTitle: "L'approche",
+      quote:
+        "De l'expression du besoin au déploiement, en autonomie complète — cahier des charges, architecture de l'information, design et SEO dans un seul projet cohérent.",
+      quoteAuthor: "404Factory",
     },
   },
 

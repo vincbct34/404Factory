@@ -9,7 +9,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import type { Translations } from "@/i18n";
 
 /** Base URL for canonical and alternate links */
-const BASE_URL = "https://404factory.vincent-bichat.fr";
+const BASE_URL = "https://www.404-factory.com";
 
 type PageKey = keyof Translations["seo"];
 

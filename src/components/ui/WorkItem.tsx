@@ -33,21 +33,29 @@ export function WorkItem({ project, index }: WorkItemProps) {
     .filter(Boolean)
     .join(" ");
 
+  const visual = imageUrl ? (
+    <img src={imageUrl} alt={item.title} loading="lazy" />
+  ) : (
+    <div className="ph">{item.ph}</div>
+  );
+
   return (
     <Reveal className={layout} data-hover>
-      <a
-        className="visual"
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${item.title} — ${t.projects.viewProject}`}
-      >
-        {imageUrl ? (
-          <img src={imageUrl} alt={item.title} loading="lazy" />
-        ) : (
-          <div className="ph">{item.ph}</div>
-        )}
-      </a>
+      {project.link ? (
+        <a
+          className="visual"
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${item.title} — ${t.projects.viewProject}`}
+        >
+          {visual}
+        </a>
+      ) : (
+        <div className="visual" aria-hidden="true">
+          {visual}
+        </div>
+      )}
       <div className="info">
         <div className="num" aria-hidden="true">
           {num}
@@ -67,7 +75,7 @@ export function WorkItem({ project, index }: WorkItemProps) {
           >
             {t.projects.viewCase}
           </Link>
-        ) : (
+        ) : project.link ? (
           <a
             className="more"
             href={project.link}
@@ -76,6 +84,8 @@ export function WorkItem({ project, index }: WorkItemProps) {
           >
             {t.projects.viewProject}
           </a>
+        ) : (
+          <span className="more more-disabled">{t.projects.private}</span>
         )}
       </div>
     </Reveal>

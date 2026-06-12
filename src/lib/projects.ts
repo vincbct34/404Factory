@@ -6,11 +6,13 @@
  */
 
 export type ProjectId =
+  | "uarIcs"
   | "opera"
   | "factory"
   | "portfolio"
   | "glados"
-  | "qreview";
+  | "qreview"
+  | "epsa";
 
 export interface WorkProject {
   /** i18n key under projects.items */
@@ -19,8 +21,8 @@ export interface WorkProject {
   url?: string;
   /** Local fallback image in public/ */
   image?: string;
-  /** External link (live site or repository) */
-  link: string;
+  /** External link (live site or repository) — omit for private/internal projects */
+  link?: string;
   /** Internal case-study slug under /work/ */
   caseStudy?: string;
   /** Language-neutral tech tags */
@@ -31,11 +33,19 @@ export interface WorkProject {
 
 export const projects: WorkProject[] = [
   {
+    id: "uarIcs",
+    image: "/uar-ics.webp",
+    link: "https://uar-ics.umontpellier.fr/",
+    caseStudy: "uar-ics-montpellier",
+    tags: ["WordPress", "PHP", "SEO"],
+    featured: true,
+  },
+  {
     id: "opera",
     url: "https://inscriptions.opera-orchestre-montpellier.fr",
     link: "https://inscriptions.opera-orchestre-montpellier.fr",
     caseStudy: "opera-montpellier",
-    tags: ["Next.js", "Prisma", "PostgreSQL"],
+    tags: ["Next.js", "Prisma", "PostgreSQL", "Redis"],
     featured: true,
   },
   {
@@ -54,14 +64,20 @@ export const projects: WorkProject[] = [
   },
   {
     id: "portfolio",
-    url: "https://portfolio.vincent-bichat.fr",
-    link: "https://portfolio.vincent-bichat.fr",
+    url: "https://www.vincent-bichat.fr",
+    link: "https://www.vincent-bichat.fr",
     tags: ["Vite", "React", "Framer Motion"],
   },
   {
     id: "factory",
-    url: "https://404factory.vincent-bichat.fr",
+    url: "https://www.404-factory.com",
+    image: "/og-image.png",
     link: "https://github.com/vincbct34/404Factory",
     tags: ["Vite", "React", "TypeScript"],
+  },
+  {
+    id: "epsa",
+    image: "/epsa.webp",
+    tags: ["Electron", "React", "TypeScript"],
   },
 ];

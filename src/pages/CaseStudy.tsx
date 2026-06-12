@@ -1,6 +1,6 @@
 /**
  * @fileoverview Case study template — editorial layout with meta grid,
- * narrative blocks and client quote. Currently one study: Opéra Montpellier.
+ * narrative blocks and quote. Content keyed by slug into t.caseStudy / t.seo.
  * @module pages/CaseStudy
  */
 
@@ -10,9 +10,22 @@ import { SEOHead } from "@/components/SEOHead";
 import { Reveal } from "@/components/ui";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useOpenGraphImage } from "@/hooks/useOpenGraphImage";
+import type { Translations } from "@/i18n";
 import { localePath } from "@/lib/paths";
 import { projects } from "@/lib/projects";
 import { NotFound } from "./NotFound";
+
+/** Maps a project's caseStudy slug to its content key under t.caseStudy and t.seo */
+const CASE_STUDIES = {
+  "opera-montpellier": { contentKey: "opera", seoKey: "caseStudyOpera" },
+  "uar-ics-montpellier": { contentKey: "uarIcs", seoKey: "caseStudyUarIcs" },
+} as const satisfies Record<
+  string,
+  {
+    contentKey: keyof Omit<Translations["caseStudy"], "labels">;
+    seoKey: keyof Translations["seo"];
+  }
+>;
 
 export function CaseStudy() {
   const { slug } = useParams();
@@ -20,15 +33,17 @@ export function CaseStudy() {
   const project = projects.find((p) => p.caseStudy === slug);
   const { imageUrl } = useOpenGraphImage(project?.url, project?.image);
 
-  // Only the Opéra study exists for now
-  if (!project || slug !== "opera-montpellier") return <NotFound />;
+  const entry = slug
+    ? CASE_STUDIES[slug as keyof typeof CASE_STUDIES]
+    : undefined;
+  if (!project || !entry) return <NotFound />;
 
-  const cs = t.caseStudy.opera;
+  const cs = t.caseStudy[entry.contentKey];
   const labels = t.caseStudy.labels;
 
   return (
     <Layout>
-      <SEOHead page="caseStudyOpera" path={`/work/${slug}`} />
+      <SEOHead page={entry.seoKey} path={`/work/${slug}`} />
       <section className="pt-[13vh] md:pt-[22vh]">
         <Reveal>
           <div className="kicker mb-6">{cs.folio}</div>

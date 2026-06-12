@@ -33,6 +33,11 @@ export const en: Translations = {
       description:
         "A custom registration platform for the Opéra Orchestre National Montpellier: Next.js, Prisma, PostgreSQL. A 404Factory case study.",
     },
+    caseStudyUarIcs: {
+      title: "Case study: UAR ICS — Université de Montpellier — 404Factory",
+      description:
+        "An institutional WordPress portal federating 6 technology platforms for UAR ICS, Université de Montpellier. A 404Factory case study.",
+    },
     legal: {
       title: "Legal notice — 404Factory",
       description: "Legal information for the 404Factory website.",
@@ -112,7 +117,15 @@ export const en: Translations = {
   projects: {
     viewProject: "View project",
     viewCase: "Read the case study",
+    private: "Private project",
     items: {
+      uarIcs: {
+        title: "UAR ICS — Université de Montpellier",
+        description:
+          "A web portal federating the resources, services and news of the unit's 6 technology platforms.",
+        type: "Institutional portal",
+        ph: "ICS",
+      },
       opera: {
         title: "Opéra Orchestre Montpellier",
         description:
@@ -145,6 +158,13 @@ export const en: Translations = {
         type: "Review tool",
         ph: "QREVIEW",
       },
+      epsa: {
+        title: "EPSA Mailing Tool",
+        description:
+          "A desktop tool automating mail and email campaign workflows.",
+        type: "Internal tool",
+        ph: "EPSA",
+      },
     },
   },
 
@@ -152,7 +172,7 @@ export const en: Translations = {
   workPage: {
     idx: "01",
     title: "Work",
-    count: "05 PROJECTS",
+    count: "07 PROJECTS",
     intro:
       "Platforms, websites and tools — custom-built, template-free, and maintained to last.",
   },
@@ -186,6 +206,26 @@ export const en: Translations = {
       quote:
         "The registration platform simplified our administrative management. Professional work, delivered on time.",
       quoteAuthor: "Opéra Orchestre Montpellier",
+    },
+    uarIcs: {
+      folio: "CASE STUDY — 002",
+      title: "UAR ICS — Université de Montpellier",
+      client: "UAR ICS, Université de Montpellier",
+      role: "WordPress design & development",
+      stack: "WordPress · PHP · Custom Post Types",
+      status: "In production",
+      intro:
+        "A web portal federating the resources, services and news of 6 technology platforms under a single institutional identity.",
+      contextTitle: "The context",
+      contextText:
+        "The unit brings together 6 technology platforms with scattered resources and no shared visibility. What was missing was a single entry point, compliant with the Université de Montpellier's visual identity and accessibility standards (RGAA).",
+      solutionTitle: "What we built",
+      solutionText:
+        "A custom WordPress portal: Custom Post Types and taxonomies to structure the 6 platforms, the university's institutional identity integrated throughout, academic SEO (heading structure, metadata, internal linking), performance work (compression, caching) and documentation for content owners.",
+      quoteTitle: "The approach",
+      quote:
+        "From requirements to deployment, fully autonomous — specification, information architecture, design and SEO in one coherent project.",
+      quoteAuthor: "404Factory",
     },
   },
 

@@ -708,6 +708,16 @@ section {
   color: var(--klein);
 }
 
+.work-item .more-disabled {
+  color: var(--muted);
+  border-bottom-color: var(--rule);
+  cursor: default;
+}
+
+.work-item .more-disabled:hover {
+  color: var(--muted);
+}
+
 /* Alternation classes are set from the item index in WorkItem.tsx
    (nth-child would count sibling section heads and intros) */
 .work-item:not(.flip) .visual {
