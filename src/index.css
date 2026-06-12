@@ -1,0 +1,1181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Design Tokens — "The Void" ===== */
+:root {
+  --paper: #f4f2ec;
+  --ink: #101010;
+  --klein: #1f2deb;
+  --stone: #c9c5ba;
+  --rule: rgba(16, 16, 16, 0.14);
+  --muted: #3c3c38;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Content inset — sits inside the 4vw gridlines so text breathes off the edge */
+  --gutter: clamp(1.4rem, 6vw, 6rem);
+}
+
+/* ===== Global ===== */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter Tight", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@media (pointer: fine) {
+  body,
+  body * {
+    cursor: none !important;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  body {
+    cursor: auto;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+::selection {
+  background: var(--klein);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-left: 1px solid var(--rule);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--klein);
+}
+
+/* Focus — the custom cursor hides the pointer, never the focus state */
+*:focus-visible {
+  outline: 2px solid var(--klein);
+  outline-offset: 2px;
+}
+
+/* ===== Noise ===== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 97;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* ===== Page grid lines ===== */
+.gridlines {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4vw;
+}
+
+.gridlines i {
+  width: 1px;
+  background: var(--rule);
+}
+
+@media (max-width: 760px) {
+  .gridlines i:nth-child(3),
+  .gridlines i:nth-child(4) {
+    display: none;
+  }
+}
+
+/* ===== Custom cursor — the void ring ===== */
+.cursor {
+  position: fixed;
+  z-index: 99;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--klein);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* revealed by the first mousemove (Cursor.tsx) */
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85); /* halo keeps it visible over Klein/ink fills */
+  transition: opacity 0.2s;
+}
+
+.cursor-ring {
+  position: fixed;
+  z-index: 99;
+  width: 36px;
+  height: 36px;
+  opacity: 0; /* revealed by the first mousemove (Cursor.tsx) */
+  border-radius: 50%;
+  border: 2px solid var(--klein);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.25s,
+    height 0.25s,
+    background 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(16, 16, 16, 0.85); /* arrow reads on paper and Klein */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6); /* halo keeps border visible over Klein/ink fills */
+}
+
+.cursor-ring.hover {
+  width: 64px;
+  height: 64px;
+  background: rgba(31, 45, 235, 0.2);
+}
+
+/* ===== The zero device ===== */
+.o {
+  display: inline-block;
+  width: 0.58em;
+  height: 0.58em;
+  border: 0.085em solid var(--klein);
+  border-radius: 50%;
+  vertical-align: baseline;
+  transform: translateY(0.02em);
+  transition: background 0.3s;
+}
+
+/* ===== Marginalia ===== */
+.margin-note {
+  position: fixed;
+  z-index: 50;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.margin-note.left {
+  left: 1.2vw;
+  top: 50%;
+  transform: rotate(180deg) translateY(50%);
+  writing-mode: vertical-rl;
+}
+
+.margin-note.right {
+  right: 1.2vw;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+}
+
+@media (max-width: 760px) {
+  .margin-note {
+    display: none;
+  }
+}
+
+/* ===== Header ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px var(--gutter);
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+.site-header .logo {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* The header's difference blend would turn the Klein ring olive, so the
+   blended ring is hidden and an unblended duplicate (.logo-ring, transparent
+   text, same metrics) draws it in true Klein on top */
+.site-header .logo .o {
+  border-color: transparent;
+}
+
+.logo-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 61;
+  padding: 22px var(--gutter);
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.site-header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: var(--klein);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.site-header nav a:hover::after,
+.site-header nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 760px) {
+  .site-header nav {
+    display: none;
+  }
+}
+
+/* Mobile menu */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+@media (max-width: 760px) {
+  .menu-btn {
+    display: block;
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8vw;
+  gap: 1.2rem;
+  animation: mobile-menu-in 0.4s var(--ease) forwards;
+}
+
+.mobile-menu.is-closing {
+  animation-name: mobile-menu-out;
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mobile-menu-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+.mobile-menu a {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 10vw, 4rem);
+  letter-spacing: -0.04em;
+  color: var(--paper);
+  text-decoration: none;
+  line-height: 1.05;
+}
+
+.mobile-menu a:hover {
+  color: var(--klein);
+}
+
+.mobile-menu .meta {
+  margin-top: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244, 242, 236, 0.6);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--gutter) 8vh;
+  z-index: 1;
+}
+
+.hero canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.hero h1 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 11.5vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.hero .folio {
+  position: absolute;
+  top: 14vh;
+  right: 4vw;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  writing-mode: vertical-rl;
+  opacity: 0.5;
+}
+
+.hero .strap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--ink);
+  padding-top: 1.2rem;
+}
+
+.hero .strap p {
+  max-width: 36ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.hero .strap .coords {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 2;
+}
+
+/* Mobile: bottom-anchored content reads as empty space — center it
+   (svh: center within what's visible under the browser UI bars).
+   The folio joins the flow above the title, and the strap stacks.
+   (Must come after the base .hero rules — same specificity.) */
+@media (max-width: 760px) {
+  .hero {
+    min-height: 100svh;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .hero .folio {
+    position: static;
+    writing-mode: horizontal-tb;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero .strap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem;
+  }
+
+  .hero .strap .coords {
+    text-align: left;
+  }
+}
+
+/* ===== Marquee ===== */
+.marquee {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+.marquee .track {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  padding: 14px 0;
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee .track > span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.marquee .ring {
+  width: 13px;
+  height: 13px;
+  border: 3px solid var(--klein);
+  border-radius: 50%;
+  margin: 0 18px;
+  flex: 0 0 auto;
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee .track {
+    animation: none;
+  }
+
+  .mobile-menu {
+    animation: none;
+  }
+}
+
+/* ===== Sections ===== */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 14vh var(--gutter);
+}
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+  margin-bottom: 7vh;
+}
+
+.sec-head .idx {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--klein);
+}
+
+.sec-head h1,
+.sec-head h2 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  letter-spacing: -0.04em;
+}
+
+.sec-head .count {
+  margin-left: auto;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  opacity: 0.5;
+  text-align: right;
+}
+
+/* Narrow phones: idx + title + count can't share one line */
+@media (max-width: 480px) {
+  .sec-head {
+    flex-wrap: wrap;
+    gap: 0.8rem 1.2rem;
+  }
+}
+
+/* ===== Reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===== Work — broken grid ===== */
+.work-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  margin-bottom: 16vh;
+  align-items: center;
+}
+
+.work-item .visual {
+  position: relative;
+  height: 52vh;
+  min-height: 340px;
+  border: 1px solid var(--ink);
+  overflow: hidden;
+  background: var(--stone);
+  display: block;
+}
+
+.work-item .visual .ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 8rem);
+  letter-spacing: -0.05em;
+  color: rgba(16, 16, 16, 0.18);
+  transition: transform 0.6s var(--ease);
+}
+
+.work-item .visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.work-item:hover .visual .ph,
+.work-item:hover .visual img {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+.work-item .info {
+  position: relative;
+}
+
+.work-item .num {
+  position: absolute;
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(5rem, 11vw, 10rem);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ink);
+  opacity: 0.55;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.work-item h3 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.8rem;
+}
+
+.work-item p {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 38ch;
+  margin-bottom: 1.2rem;
+}
+
+.work-item .tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tags span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  padding: 5px 12px;
+  border-radius: 99px;
+}
+
+.work-item .more {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--klein);
+  padding-bottom: 4px;
+}
+
+.work-item .more:hover {
+  color: var(--klein);
+}
+
+/* Alternation classes are set from the item index in WorkItem.tsx
+   (nth-child would count sibling section heads and intros) */
+.work-item:not(.flip) .visual {
+  grid-column: 1/8;
+}
+
+.work-item:not(.flip) .info {
+  grid-column: 8/13;
+  padding-left: 2rem;
+}
+
+.work-item:not(.flip) .num {
+  top: -9rem;
+  right: 0;
+  transform: rotate(6deg);
+}
+
+.work-item.flip .visual {
+  grid-column: 6/13;
+}
+
+.work-item.flip .info {
+  grid-column: 1/6;
+  grid-row: 1;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.work-item.flip .info .tags {
+  justify-content: flex-end;
+}
+
+.work-item.flip .info p {
+  margin-left: auto;
+}
+
+.work-item.flip .num {
+  bottom: -8rem;
+  left: 0;
+  transform: rotate(-5deg);
+}
+
+.work-item.pull-up .visual {
+  margin-top: -6vh;
+}
+
+.work-item.pull-down .visual {
+  margin-bottom: -4vh;
+}
+
+@media (max-width: 860px) {
+  .work-item {
+    grid-template-columns: 1fr;
+  }
+
+  .work-item .visual,
+  .work-item .info {
+    grid-column: 1/-1 !important;
+    grid-row: auto !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .work-item .info {
+    margin-top: 1.4rem !important;
+  }
+
+  .work-item .num {
+    display: none;
+  }
+
+  .work-item .info .tags {
+    justify-content: flex-start !important;
+  }
+}
+
+/* ===== Services — index rows ===== */
+.svc {
+  border-top: 1px solid var(--ink);
+}
+
+.svc-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 1px solid var(--ink);
+  padding: 2.2rem 0;
+  position: relative;
+  overflow: hidden;
+  transition: padding 0.35s;
+  color: inherit;
+  text-decoration: none;
+}
+
+.svc-row:hover {
+  padding-left: 1.5rem;
+}
+
+.svc-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--klein);
+  transform: translateY(101%);
+  transition: transform 0.45s var(--ease);
+  z-index: 0;
+}
+
+.svc-row:hover::before {
+  transform: translateY(0);
+}
+
+.svc-row > * {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+.svc-row:hover > * {
+  color: #fff;
+}
+
+.svc-row .n {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.svc-row h3 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 3.2rem);
+  letter-spacing: -0.03em;
+}
+
+.svc-row .d {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 30ch;
+  text-align: right;
+}
+
+.svc-row:hover .d {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 760px) {
+  .svc-row {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .svc-row .d {
+    display: none;
+  }
+}
+
+/* Narrow phones: long single words ("Automatisations") must fit the row */
+@media (max-width: 420px) {
+  .svc-row {
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+  }
+
+  .svc-row h3 {
+    font-size: clamp(1.25rem, 6.5vw, 1.6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-row,
+  .svc-row::before,
+  .svc-row > * {
+    transition: none;
+  }
+}
+
+/* ===== Manifesto — scroll-lit words ===== */
+.manifesto {
+  max-width: 1100px;
+}
+
+.manifesto p {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4.4vw, 3.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.manifesto .w {
+  color: rgba(16, 16, 16, 0.18);
+  transition: color 0.4s;
+}
+
+.manifesto .w.lit {
+  color: var(--ink);
+}
+
+.manifesto .w.k.lit {
+  color: var(--klein);
+}
+
+/* ===== Editorial prose / detail pages ===== */
+.kicker {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.display-title {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 8vw, 7rem);
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+
+.prose-block {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 62ch;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+
+.meta-grid > div {
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 1.2rem 1.4rem;
+  min-width: 0;
+}
+
+.meta-grid .label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 0.5rem;
+}
+
+.meta-grid .value {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  /* Long unbreakable values (emails) must not escape their cell */
+  overflow-wrap: anywhere;
+}
+
+/* ===== Buttons / links ===== */
+.btn-void {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.btn-void::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--klein);
+  transform: translateY(101%);
+  transition: transform 0.45s var(--ease);
+  z-index: 0;
+}
+
+.btn-void:hover::before,
+.btn-void:focus-visible::before {
+  transform: translateY(0);
+}
+
+.btn-void > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-void:hover,
+.btn-void:focus-visible {
+  color: #fff;
+}
+
+.btn-void:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-void:disabled::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-void::before {
+    transition: none;
+  }
+}
+
+/* ===== Forms ===== */
+.field label {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--ink);
+  padding: 14px 16px;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  border-radius: 0;
+  transition: border-color 0.3s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--klein);
+  box-shadow: inset 0 0 0 1px var(--klein);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(16, 16, 16, 0.35);
+}
+
+.field textarea {
+  resize: none;
+}
+
+.form-status {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  padding: 12px 16px;
+}
+
+.form-status.ok {
+  border-color: var(--klein);
+  color: var(--klein);
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14vh var(--gutter) 4vh;
+  overflow: hidden;
+}
+
+.site-footer .cta {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 9.5vw, 9rem);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  text-decoration: none;
+  color: var(--paper);
+  display: block;
+}
+
+.site-footer .cta .o {
+  border-color: var(--klein);
+}
+
+.site-footer .cta:hover .o,
+.site-footer .cta:focus-visible .o {
+  background: var(--klein);
+}
+
+.site-footer .row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 10vh;
+  border-top: 1px solid rgba(244, 242, 236, 0.2);
+  padding-top: 1.4rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 242, 236, 0.6);
+}
+
+.site-footer .row a {
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.site-footer .row a:hover {
+  color: var(--klein);
+}
+
+.blink {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: var(--klein);
+  vertical-align: text-bottom;
+  animation: blink 1.2s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink {
+    animation: none;
+  }
+}
+
+/* 404 page CTA — the ring gets "found" on hover */
+.cta-found:hover .o,
+.cta-found:focus-visible .o {
+  background: var(--klein);
+}
+
+/* Reviews grid: an odd last item fills its row, otherwise the ink
+   background of the grid shows through the empty cell */
+.reviews-grid > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* ===== Ink sections (solid interruptions, not a dark mode) ===== */
+.ink-block {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.ink-block .prose-block {
+  color: rgba(244, 242, 236, 0.6);
+}

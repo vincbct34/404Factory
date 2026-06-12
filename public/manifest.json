@@ -1,0 +1,33 @@
+{
+  "name": "404Factory",
+  "short_name": "404Factory",
+  "description": "Studio indépendant à Montpellier : sites web sur-mesure, automatisations et consulting technique. On construit ce qui manque.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F2EC",
+  "theme_color": "#F4F2EC",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/ring.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "fr",
+  "dir": "ltr"
+}
