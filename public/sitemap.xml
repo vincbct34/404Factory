@@ -5,6 +5,7 @@
     <loc>https://www.404-factory.com/</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -13,6 +14,7 @@
     <loc>https://www.404-factory.com/en</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -21,6 +23,7 @@
     <loc>https://www.404-factory.com/work</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/work" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -29,6 +32,7 @@
     <loc>https://www.404-factory.com/en/work</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/work" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -37,6 +41,7 @@
     <loc>https://www.404-factory.com/work/opera-montpellier</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/opera-montpellier" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/opera-montpellier" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/work/opera-montpellier" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -45,6 +50,7 @@
     <loc>https://www.404-factory.com/en/work/opera-montpellier</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/opera-montpellier" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/opera-montpellier" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/work/opera-montpellier" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -53,6 +59,7 @@
     <loc>https://www.404-factory.com/work/uar-ics-montpellier</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/uar-ics-montpellier" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/uar-ics-montpellier" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/work/uar-ics-montpellier" />
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -61,6 +68,7 @@
     <loc>https://www.404-factory.com/en/work/uar-ics-montpellier</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/work/uar-ics-montpellier" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/work/uar-ics-montpellier" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/work/uar-ics-montpellier" />
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -69,6 +77,7 @@
     <loc>https://www.404-factory.com/services</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/services" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/services" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -77,6 +86,7 @@
     <loc>https://www.404-factory.com/en/services</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/services" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/services" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -85,6 +95,7 @@
     <loc>https://www.404-factory.com/studio</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/studio" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/studio" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/studio" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -93,6 +104,7 @@
     <loc>https://www.404-factory.com/en/studio</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/studio" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/studio" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/studio" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -101,6 +113,7 @@
     <loc>https://www.404-factory.com/contact</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/contact" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/contact" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -109,6 +122,7 @@
     <loc>https://www.404-factory.com/en/contact</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/contact" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/contact" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -117,6 +131,7 @@
     <loc>https://www.404-factory.com/legal</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/legal" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/legal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/legal" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -125,6 +140,7 @@
     <loc>https://www.404-factory.com/en/legal</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.404-factory.com/legal" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.404-factory.com/en/legal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.404-factory.com/legal" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

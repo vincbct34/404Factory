@@ -1,10 +1,15 @@
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 import { handleContact } from "./contact-handler.js";
+import { injectSeo } from "./seo.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, "..", "dist");
+
+// Read the built shell once at startup; rewritten per request for SEO.
+const indexHtml = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
 const app = express();
 
@@ -27,7 +32,8 @@ app.get("*", (req, res, next) => {
     next();
     return;
   }
-  res.sendFile(path.join(distDir, "index.html"));
+  res.set("Content-Type", "text/html; charset=utf-8");
+  res.send(injectSeo(indexHtml, req.path));
 });
 
 const port = process.env.PORT || 3000;
