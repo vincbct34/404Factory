@@ -36,21 +36,6 @@ export function Contact() {
           {/* Form */}
           <Reveal className="lg:col-span-7">
             <form onSubmit={handleSubmit} className="space-y-8" noValidate>
-              {state.error && (
-                <div className="form-status" role="alert" aria-live="assertive">
-                  ERR — {state.error}
-                </div>
-              )}
-              {state.isSuccess && (
-                <div
-                  className="form-status ok"
-                  role="status"
-                  aria-live="polite"
-                >
-                  OK — {t.contact.success}
-                </div>
-              )}
-
               <div className="field">
                 <label htmlFor="contact-name">{t.contact.form.name}</label>
                 <input
@@ -127,6 +112,21 @@ export function Contact() {
                     : `${t.contact.form.send} →`}
                 </span>
               </button>
+
+              {state.error && (
+                <div className="form-status" role="alert" aria-live="assertive">
+                  ERR — {state.error}
+                </div>
+              )}
+              {state.isSuccess && (
+                <div
+                  className="form-status ok"
+                  role="status"
+                  aria-live="polite"
+                >
+                  OK — {t.contact.success}
+                </div>
+              )}
             </form>
           </Reveal>
 
