@@ -13,6 +13,16 @@ const indexHtml = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
 const app = express();
 
+app.use((req, res, next) => {
+  const host = req.headers.host?.split(":")[0];
+
+  if (host === "404factory.vincent-bichat.fr") {
+    return res.redirect(301, `https://www.404-factory.com${req.originalUrl}`);
+  }
+
+  next();
+});
+
 app.use(express.json());
 
 app.post("/api/contact", async (req, res) => {
