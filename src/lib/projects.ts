@@ -42,8 +42,8 @@ export const projects: WorkProject[] = [
   },
   {
     id: "opera",
-    url: "https://inscriptions.opera-orchestre-montpellier.fr",
     link: "https://inscriptions.opera-orchestre-montpellier.fr",
+    image: "/opera-orchestre-montpellier.webp",
     caseStudy: "opera-montpellier",
     tags: ["Next.js", "Prisma", "PostgreSQL", "Redis"],
     featured: true,
@@ -54,16 +54,9 @@ export const projects: WorkProject[] = [
     tags: ["Haskell"],
   },
   {
-    id: "qreview",
-    url: "https://qreview.vincent-bichat.fr",
-    link: "https://github.com/vincbct34/QReview",
-    tags: ["HTML", "CSS", "JavaScript"],
-    featured: true,
-  },
-  {
     id: "portfolio",
-    url: "https://www.vincent-bichat.fr",
     link: "https://www.vincent-bichat.fr",
+    image: "/portfolio.webp",
     tags: ["Vite", "React", "Framer Motion"],
     featured: true,
   },
