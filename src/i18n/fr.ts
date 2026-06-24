@@ -166,6 +166,27 @@ export const fr = {
         type: "Outil interne",
         ph: "EPSA",
       },
+      cvisual: {
+        title: "CVisual",
+        description:
+          "Créateur de CV gratuit : modèles optimisés pour les ATS, suggestions IA et export PDF/DOCX.",
+        type: "Application web",
+        ph: "CV",
+      },
+      myvouch: {
+        title: "MyVouch",
+        description:
+          "Plateforme de recommandations professionnelles vérifiées, réunies sur un mur partageable.",
+        type: "Plateforme SaaS",
+        ph: "VOUCH",
+      },
+      guardinput: {
+        title: "GuardInput",
+        description:
+          "Détecte et masque les données sensibles avant tout envoi vers une IA — directement dans le navigateur.",
+        type: "Sécurité des données",
+        ph: "GUARD",
+      },
     },
   },
 
@@ -173,7 +194,7 @@ export const fr = {
   workPage: {
     idx: "01",
     title: "Projets",
-    count: "07 PROJETS",
+    count: "09 PROJETS",
     intro:
       "Plateformes, sites et outils — construits sur-mesure, sans template, et maintenus pour durer.",
   },

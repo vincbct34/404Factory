@@ -165,6 +165,27 @@ export const en: Translations = {
         type: "Internal tool",
         ph: "EPSA",
       },
+      cvisual: {
+        title: "CVisual",
+        description:
+          "A free CV builder: ATS-optimized templates, AI suggestions and PDF/DOCX export.",
+        type: "Web app",
+        ph: "CV",
+      },
+      myvouch: {
+        title: "MyVouch",
+        description:
+          "A platform that gathers verified professional recommendations on a shareable wall.",
+        type: "SaaS platform",
+        ph: "VOUCH",
+      },
+      guardinput: {
+        title: "GuardInput",
+        description:
+          "Detects and masks sensitive data before anything reaches an AI — right in the browser.",
+        type: "Data privacy",
+        ph: "GUARD",
+      },
     },
   },
 
@@ -172,7 +193,7 @@ export const en: Translations = {
   workPage: {
     idx: "01",
     title: "Work",
-    count: "07 PROJECTS",
+    count: "09 PROJECTS",
     intro:
       "Platforms, websites and tools — custom-built, template-free, and maintained to last.",
   },

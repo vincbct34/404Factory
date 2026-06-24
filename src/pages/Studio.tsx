@@ -1,5 +1,5 @@
 /**
- * @fileoverview Studio — bio, approach, tech stack, client reviews (QReview API)
+ * @fileoverview Studio — bio, approach, tech stack, client reviews (MyVouch API)
  * @module pages/Studio
  */
 
@@ -73,7 +73,7 @@ export function Studio() {
         </Reveal>
         <Reveal className="svc mb-[14vh]">
           {t.studio.approach.map((point, i) => (
-            <div key={i} className="svc-row" data-hover>
+            <div key={i} className="svc-row">
               <span className="n">{String(i + 1).padStart(3, "0")}</span>
               <h3 className="!text-[clamp(1.1rem,2.4vw,1.8rem)] !font-bold">
                 {point}

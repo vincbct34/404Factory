@@ -1,27 +1,22 @@
 /**
- * @fileoverview Hook for fetching reviews from the QReview external API
+ * @fileoverview Hook for fetching endorsements via the server-side MyVouch proxy
  * @module hooks/useReviews
  */
 
 import { useState, useEffect } from "react";
 
-const QREVIEW_API_URL = import.meta.env.VITE_QREVIEW_API_URL;
-const QREVIEW_API_TOKEN = import.meta.env.VITE_QREVIEW_API_TOKEN;
-
-/** Shape of a single review from the QReview API */
+/** Shape of a single normalized review from /api/endorsements */
 export interface Review {
   id: number;
   author_name: string;
   company_name: string;
   position: string;
-  duration: string;
   rating: number;
   comment: string;
-  created_at: string;
-  company_verified: boolean;
+  verified: boolean;
 }
 
-/** Shape of the stats response from the QReview API */
+/** Derived stats returned alongside the reviews */
 export interface ReviewStats {
   total_reviews: string;
   average_rating: string;
@@ -36,40 +31,27 @@ interface UseReviewsResult {
 }
 
 /**
- * Fetches validated reviews and stats from the QReview external API
- * Falls back gracefully if the API is unavailable or not configured
+ * Fetches approved endorsements and stats from the server-side MyVouch proxy
+ * (`/api/endorsements`). The bearer token stays server-side. Falls back
+ * gracefully to the static review on the Studio page if the API is unavailable.
  */
 export function useReviews(): UseReviewsResult {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
-  const [isLoading, setIsLoading] = useState(() =>
-    Boolean(QREVIEW_API_URL && QREVIEW_API_TOKEN),
-  );
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!QREVIEW_API_URL || !QREVIEW_API_TOKEN) return;
-
-    const headers = { Authorization: `Bearer ${QREVIEW_API_TOKEN}` };
-
     async function fetchReviews() {
       try {
-        const [reviewsRes, statsRes] = await Promise.all([
-          fetch(`${QREVIEW_API_URL}/reviews?sort=rating&order=desc&limit=6`, {
-            headers,
-          }),
-          fetch(`${QREVIEW_API_URL}/reviews/stats`, { headers }),
-        ]);
-
-        if (!reviewsRes.ok || !statsRes.ok) {
+        const res = await fetch("/api/endorsements");
+        if (!res.ok) {
           throw new Error("API request failed");
         }
 
-        const reviewsData = await reviewsRes.json();
-        const statsData = await statsRes.json();
-
-        setReviews(reviewsData.reviews ?? []);
-        setStats(statsData);
+        const data = await res.json();
+        setReviews(data.reviews ?? []);
+        setStats(data.stats ?? null);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "Failed to fetch reviews",

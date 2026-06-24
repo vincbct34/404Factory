@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 import { handleContact } from "./contact-handler.js";
+import { fetchEndorsements } from "./endorsements.js";
 import { injectSeo } from "./seo.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +33,15 @@ app.post("/api/contact", async (req, res) => {
   } catch (error) {
     console.error("Contact form error:", error);
     res.status(400).json({ ok: false });
+  }
+});
+
+app.get("/api/endorsements", async (_req, res) => {
+  try {
+    res.json(await fetchEndorsements());
+  } catch (error) {
+    console.error("Endorsements fetch error:", error);
+    res.status(502).json({ reviews: [], stats: null });
   }
 });
 

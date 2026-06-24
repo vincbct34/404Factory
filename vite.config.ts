@@ -2,10 +2,10 @@ import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-/** Dev-only middleware mirroring the prod /api/contact Express route */
-function contactApiPlugin(): Plugin {
+/** Dev-only middleware mirroring the prod /api/* Express routes */
+function apiPlugin(): Plugin {
   return {
-    name: "contact-api",
+    name: "api",
     configureServer(server) {
       server.middlewares.use("/api/contact", async (req, res) => {
         if (req.method !== "POST") {
@@ -33,6 +33,20 @@ function contactApiPlugin(): Plugin {
           res.end(JSON.stringify({ ok: false }));
         }
       });
+
+      server.middlewares.use("/api/endorsements", async (_req, res) => {
+        res.setHeader("Content-Type", "application/json");
+        try {
+          const { fetchEndorsements } =
+            await import("./server/endorsements.js");
+          res.statusCode = 200;
+          res.end(JSON.stringify(await fetchEndorsements()));
+        } catch (error) {
+          console.error("Endorsements fetch error:", error);
+          res.statusCode = 502;
+          res.end(JSON.stringify({ reviews: [], stats: null }));
+        }
+      });
     },
   };
 }
@@ -44,7 +58,7 @@ export default defineConfig(({ mode }) => {
   Object.assign(process.env, loadEnv(mode, process.cwd(), ""));
 
   return {
-    plugins: [react(), contactApiPlugin()],
+    plugins: [react(), apiPlugin()],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),

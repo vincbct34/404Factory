@@ -40,7 +40,7 @@ export function WorkItem({ project, index }: WorkItemProps) {
   );
 
   return (
-    <Reveal className={layout} data-hover>
+    <Reveal className={layout}>
       {project.link ? (
         <a
           className="visual"

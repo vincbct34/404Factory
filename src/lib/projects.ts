@@ -12,7 +12,10 @@ export type ProjectId =
   | "portfolio"
   | "glados"
   | "qreview"
-  | "epsa";
+  | "epsa"
+  | "cvisual"
+  | "myvouch"
+  | "guardinput";
 
 export interface WorkProject {
   /** i18n key under projects.items */
@@ -70,5 +73,25 @@ export const projects: WorkProject[] = [
     id: "epsa",
     image: "/epsa.webp",
     tags: ["Electron", "React", "TypeScript"],
+  },
+  {
+    id: "cvisual",
+    image: "/cvisual.webp",
+    link: "https://www.cvisual.fr",
+    tags: ["Next.js", "TypeScript", "TailwindCSS"],
+    featured: true,
+  },
+  {
+    id: "myvouch",
+    image: "/myvouch.webp",
+    link: "https://www.myvouch.fr",
+    tags: ["Next.js", "TypeScript", "TailwindCSS"],
+  },
+  {
+    id: "guardinput",
+    image: "/guardinput.webp",
+    link: "https://www.guardinput.com",
+    tags: ["In reflection"],
+    featured: true,
   },
 ];
