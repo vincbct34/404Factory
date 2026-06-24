@@ -58,7 +58,6 @@ export const projects: WorkProject[] = [
     link: "https://www.vincent-bichat.fr",
     image: "/portfolio.webp",
     tags: ["Vite", "React", "Framer Motion"],
-    featured: true,
   },
   {
     id: "factory",
@@ -71,6 +70,5 @@ export const projects: WorkProject[] = [
     id: "epsa",
     image: "/epsa.webp",
     tags: ["Electron", "React", "TypeScript"],
-    featured: true,
   },
 ];
