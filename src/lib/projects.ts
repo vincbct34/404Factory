@@ -91,7 +91,7 @@ export const projects: WorkProject[] = [
     id: "guardinput",
     image: "/guardinput.webp",
     link: "https://www.guardinput.com",
-    tags: ["In reflection"],
+    tags: [],
     featured: true,
   },
 ];
