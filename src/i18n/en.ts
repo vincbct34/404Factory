@@ -143,7 +143,7 @@ export const en: Translations = {
         title: "Portfolio",
         description: "A personal multi-themed portfolio.",
         type: "Portfolio",
-        ph: "OS",
+        ph: "PORTFOLIO",
       },
       glados: {
         title: "GLaDOS",
@@ -185,6 +185,13 @@ export const en: Translations = {
           "Detects and masks sensitive data before anything reaches an AI — right in the browser.",
         type: "Data privacy",
         ph: "GUARD",
+      },
+      decale: {
+        title: "Décalé",
+        description:
+          "A web app to declare and track staff staggered working hours.",
+        type: "Internal tool",
+        ph: "DECALE",
       },
     },
   },

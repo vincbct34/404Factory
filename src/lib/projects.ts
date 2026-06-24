@@ -15,7 +15,8 @@ export type ProjectId =
   | "epsa"
   | "cvisual"
   | "myvouch"
-  | "guardinput";
+  | "guardinput"
+  | "decale";
 
 export interface WorkProject {
   /** i18n key under projects.items */
@@ -93,5 +94,9 @@ export const projects: WorkProject[] = [
     link: "https://www.guardinput.com",
     tags: [],
     featured: true,
+  },
+  {
+    id: "decale",
+    tags: ["Symfony", "PHP"],
   },
 ];

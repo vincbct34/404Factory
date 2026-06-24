@@ -144,7 +144,7 @@ export const fr = {
         title: "Portfolio",
         description: "Un portfolio personnel multi-thémes.",
         type: "Portfolio",
-        ph: "OS",
+        ph: "PORTFOLIO",
       },
       glados: {
         title: "GLaDOS",
@@ -186,6 +186,13 @@ export const fr = {
           "Détecte et masque les données sensibles avant tout envoi vers une IA — directement dans le navigateur.",
         type: "Sécurité des données",
         ph: "GUARD",
+      },
+      decale: {
+        title: "Décalé",
+        description:
+          "Application web pour déclarer et suivre les horaires décalés du personnel.",
+        type: "Outil interne",
+        ph: "DÉCALÉ",
       },
     },
   },
